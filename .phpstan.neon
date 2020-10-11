@@ -1,0 +1,5 @@
+parameters:
+	ignoreErrors:
+		- '#but the class implements:.*IteratorAggregate#'
+		- '#Property .*Request::.* is not writable.#'
+		- '#Property class@anonymous.* is not writable.#'

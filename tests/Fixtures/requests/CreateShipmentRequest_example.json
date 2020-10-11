@@ -1,0 +1,73 @@
+{
+    "to_address": {
+        "address1": "京都市中京区八百屋町117",
+        "city": "京都府",
+        "country": "JP",
+        "full_name": "TEST TARO",
+        "phone": "1111111111",
+        "zip": "604-8072"
+    },
+    "from_address": {
+        "address1": "OSAKAFU",
+        "city": "IBARAKI SHI",
+        "country": "JP",
+        "full_name": "テスト",
+        "phone": "08012341234",
+        "province": "OSAKA",
+        "zip": "1234567"
+    },
+    "products": [
+        {
+            "name": "Blue Basketball",
+            "quantity": 2,
+            "price": 4850,
+            "origin_country": "JP"
+        },
+        {
+            "name": "Orange Basketball",
+            "quantity": 1,
+            "price": 7850,
+            "origin_country": "JP"
+        }
+    ],
+    "parcels": [
+        {
+            "amount": 1,
+            "depth": 10,
+            "height": 10,
+            "width": 10,
+            "weight": 2000.0,
+            "package": "fedex_envelope"
+        }
+    ],
+    "customs": {
+        "duty_paid": false,
+        "content_type": "MERCHANDISE"
+    },
+    "setup": {
+        "carrier": "sagawa",
+        "service": "sagawa_regular",
+        "currency": "JPY",
+        "shipment_date": "2001-01-02",
+        "date": "2002-02-03",
+        "time": "16-18",
+        "insurance": 0.0,
+        "ref_number": "",
+        "delivery_note": "",
+        "signature": false,
+        "pack_size": "0",
+        "pack_amount": 3,
+        "return_label": false,
+        "print_start_location": 1,
+        "test": true,
+        "care": {
+            "fragile": false,
+            "side_up": false,
+            "valuable_goods": false
+        },
+        "cash_on_delivery": {
+            "amount": 1000.0,
+            "tax": 100.0
+        }
+    }
+}

@@ -1,0 +1,1 @@
+{"debug_id":"err_222222","code":"SHIPMENT_FAILED","message":"ラベル作成時に接続エラーが発生しました。少し時間をおいてから、もう一度試してください。","details":[{"code":"INVALID","message":"SAGAWA does not have packages available. Only DHL, FEDEX can have packages."}],"link":"https://developer.shipandco.com/en/#t-rates"}

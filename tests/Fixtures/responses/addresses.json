@@ -1,0 +1,20 @@
+[
+{
+    "id": "qweasd123yuihjk",
+    "created_at": "2019-01-12T09:04:43.619Z",
+    "updated_at": "2019-01-12T09:04:43.619Z",
+    "address": {
+        "full_name": "Example Co",
+        "company": "Example Company",
+        "address1": "chukyo-ku",
+        "address2": "",
+        "address3": "",
+        "city": "Kyoto-shi",
+        "province": "Kyoto-fu",
+        "zip": "123-4567",
+        "country": "JP",
+        "phone": "0312345678",
+        "email": "info@example.com"
+    }
+}
+]

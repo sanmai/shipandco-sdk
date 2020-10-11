@@ -1,0 +1,11 @@
+site_name: ShipAndCoSDK
+theme: readthedocs
+lang: en
+
+nav:
+    - 'User Guide': index.md
+
+markdown_extensions:
+    - toc:
+        permalink: True
+    - attr_list
