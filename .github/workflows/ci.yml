@@ -3,7 +3,7 @@ name: Continuous Integration
 on:
   pull_request:
   push:
-    branches:    
+    branches:
       - main
 
 jobs:
@@ -35,6 +35,11 @@ jobs:
           coverage: none
           tools: composer:v2
 
+      - name: Validate composer.json
+        run: |
+          composer validate --strict
+          composer normalize --diff --dry-run
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -53,8 +58,3 @@ jobs:
           SHIPANDCO_ACCESS_TOKEN: ${{ secrets.SHIPANDCO_ACCESS_TOKEN }}
         run: |
           make ci-test ${{ matrix.make-args }}
-
-      - name: Validate composer.json
-        run: |
-          composer validate --strict
-          composer normalize --diff --dry-run
