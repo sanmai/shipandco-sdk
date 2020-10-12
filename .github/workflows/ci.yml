@@ -14,14 +14,14 @@ jobs:
       matrix:
         php-version: ['7.3', '7.4']
         dependencies: ['']
-        phpunit-group: ['default']
+        make-args: ['']
         include:
           - { php-version: '7.3', dependencies: '--prefer-lowest' }
-          - { php-version: '7.3', phpunit-group: 'integration' }
           - { php-version: '8.0', dependencies: '--ignore-platform-req=php' }
+          - { php-version: '7.3', make-args: 'PHPUNIT_GROUP=integration' }
 
     continue-on-error: ${{ matrix.php-version == '8.0' }}
-    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} (${{ matrix.phpunit-group }})
+    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
       - name: Checkout code
@@ -52,7 +52,7 @@ jobs:
         env:
           SHIPANDCO_ACCESS_TOKEN: ${{ secrets.SHIPANDCO_ACCESS_TOKEN }}
         run: |
-          make ci-test PHPUNIT_GROUP=${{ matrix.phpunit-group }}
+          make ci-test ${{ matrix.make-args }}
 
       - name: Validate composer.json
         run: |
