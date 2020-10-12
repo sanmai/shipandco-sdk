@@ -1,3 +1,5 @@
+# yamllint disable rule:line-length
+
 name: Code Style
 
 on:
@@ -23,7 +25,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: 
           tools: composer:v2
 
       - name: Cache dependencies
@@ -42,4 +43,3 @@ jobs:
       - name: Check code style
         run: |
           php vendor/bin/php-cs-fixer --using-cache=no --diff --dry-run --stop-on-violation --verbose fix
-          
