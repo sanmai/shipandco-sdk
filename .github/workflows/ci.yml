@@ -37,11 +37,6 @@ jobs:
           coverage: pcov
           tools: composer:v2
 
-      - name: Validate composer.json
-        run: |
-          composer validate --strict
-          composer normalize --diff --dry-run
-
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
@@ -54,6 +49,11 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
+
+      - name: Validate composer.json
+        run: |
+          composer validate --strict
+          composer normalize --diff --dry-run
 
       - name: Execute tests
         env:
