@@ -214,8 +214,7 @@ foreach ($response as $rate) {
 
 ### Create Shipment
 
-```
-
+```php
 $request = new \ShipAndCoSDK\Requests\CreateShipmentRequest();
 
 $request->to_address->country = 'JP';
