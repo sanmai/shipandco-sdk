@@ -44,6 +44,14 @@ use ShipAndCoSDK\Responses\Types\Setup;
  * @property-read string $state
  * @property-read bool $test
  * @property-read DateTimeImmutable $created_at
+ * @property-read Address $to_address
+ * @property-read Product[] $products
+ * @property-read Address $from_address
+ * @property-read Parcel[] $parcels
+ * @property-read Customs $customs
+ * @property-read Customs $customs
+ * @property-read Setup $setup
+ * @property-read Delivery $delivery
  */
 final class ShipmentResponse implements Response
 {
