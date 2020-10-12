@@ -49,7 +49,6 @@ use ShipAndCoSDK\Responses\Types\Setup;
  * @property-read Address $from_address
  * @property-read Parcel[] $parcels
  * @property-read Customs $customs
- * @property-read Customs $customs
  * @property-read Setup $setup
  * @property-read Delivery $delivery
  */
