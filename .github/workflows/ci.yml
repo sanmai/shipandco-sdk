@@ -1,4 +1,4 @@
-name: Unit Testing
+name: Continuous Integration
 
 on:
   pull_request:
@@ -14,12 +14,14 @@ jobs:
       matrix:
         php-version: ['7.3', '7.4']
         dependencies: ['']
+        phpunit-group: ['default']
         include:
           - { php-version: '7.3', dependencies: '--prefer-lowest' }
+          - { php-version: '7.3', phpunit-group: 'integration' }
           - { php-version: '8.0', dependencies: '--ignore-platform-req=php' }
 
     continue-on-error: ${{ matrix.php-version == '8.0' }}
-    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }}
+    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} (${{ matrix.phpunit-group }})
 
     steps:
       - name: Checkout code
@@ -47,8 +49,10 @@ jobs:
           composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
 
       - name: Execute tests
+        env:
+          SHIPANDCO_ACCESS_TOKEN: ${{ secrets.SHIPANDCO_ACCESS_TOKEN }}
         run: |
-          make ci-test
+          make ci-test PHPUNIT_GROUP=${{ matrix.phpunit-group }}
 
       - name: Validate composer.json
         run: |
