@@ -62,6 +62,7 @@ $request->to_address->zip = '2820-344';
 $request->to_address->city = 'CHARNECA DA CAPARICA';
 
 $product = $request->addProduct();
+$product->quantity = 1;
 $product->name = 'Example';
 $product->price = 1000;
 

@@ -102,7 +102,28 @@ if ($response->hasErrors()) {
 }
 ```
 
-### List Carriers
+### Requests
+
+For every request there's a runnable example. E.g. running this:
+
+```bash
+export SHIPANDCO_ACCESS_TOKEN=... (your token)
+php examples/030_CarriersRequest.php
+```
+
+...Will output your registered carriers.
+
+Examples come with a debugging output enabled so that you can experiment freely.
+
+Obviosly, to run examples you'll need to have the library checked out:
+
+```bash
+git clone https://github.com/sanmai/shipandco-sdk.git
+cd shipandco-sdk
+composer install
+```
+
+#### List Carriers
 
 ```php
 $request = new \ShipAndCoSDK\Requests\CarriersRequest();
@@ -120,7 +141,7 @@ foreach ($response as $value) {
 }
 ```
 
-### List Addresses
+#### List Addresses
 
 ```php
 $request = new \ShipAndCoSDK\Requests\AddressesRequest();
@@ -138,7 +159,7 @@ foreach ($response as $value) {
 }
 ```
 
-### List Warehouses
+#### List Warehouses
 
 ```php
 $request = new \ShipAndCoSDK\Requests\WarehousesRequest();
@@ -156,7 +177,7 @@ foreach ($response as $value) {
 }
 ```
 
-### List Rates
+#### List Rates
 
 ```php
 $request = new \ShipAndCoSDK\Requests\RatesRequest();
@@ -185,6 +206,7 @@ $request->to_address->zip = '2820-344';
 $request->to_address->city = 'CHARNECA DA CAPARICA';
 
 $product = $request->addProduct();
+$product->quantity = 1;
 $product->name = 'Example';
 $product->price = 1000;
 
@@ -212,7 +234,7 @@ foreach ($response as $rate) {
 }
 ```
 
-### Create Shipment
+#### Create Shipment
 
 ```php
 $request = new \ShipAndCoSDK\Requests\CreateShipmentRequest();
