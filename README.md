@@ -7,24 +7,24 @@
 Features:
 
 - [ ] Shipments
-  - [x] Create Shipment
+  - [x] [Create Shipment](#create-shipment)
   - [ ] List Shipments
   - [ ] Get Shipment
   - [ ] Delete Shipment
 - [x] Rate
-  - [x] List Rates
+  - [x] [List Rates](#list-rates)
 - [ ] Carrier
   - [ ] Register Carrier
-  - [x] List Carriers
+  - [x] [List Carriers](#list-carriers)
   - [ ] Update Carrier
   - [ ] Delete Carrier
 - [ ] Tracking
 - [ ] Address
   - [ ] Register Address
-  - [x] List Addresses
+  - [x] [List Addresses](#list-addresses)
 - [ ] Warehouse
   - [ ] Register Warehouse
-  - [x] List Warehouses
+  - [x] [List Warehouses](#list-warehouses)
 - [ ] Sub User
   - [ ] Register Sub User
   - [ ] List Sub User
