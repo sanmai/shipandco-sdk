@@ -229,7 +229,7 @@ foreach ($response as $rate) {
     echo "{$rate->carrier}\t{$rate->service}\t{$rate->price} {$rate->currency}\n";
 
     foreach ($rate->surcharges as $surcharge) {
-        echo "\t{$surcharge->type}\t{$surcharge->amount}\n";
+        echo "\t{$surcharge->type}\t{$surcharge->price}\n";
     }
 }
 ```

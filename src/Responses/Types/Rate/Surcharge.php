@@ -32,7 +32,7 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * @property-read string $type
- * @property-read float|int $amount
+ * @property-read float|int $price
  */
 final class Surcharge
 {
@@ -49,6 +49,15 @@ final class Surcharge
      * @JMS\Type("float")
      *
      * @var float
+     */
+    private $price;
+
+    /**
+     * @JMS\Type("float")
+     *
+     * @var float
+     *
+     * @deprecated
      */
     private $amount;
 }

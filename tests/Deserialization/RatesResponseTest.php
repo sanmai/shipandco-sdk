@@ -38,6 +38,8 @@ class RatesResponseTest extends TestCase
     public function commonResponsesProvider(): iterable
     {
         yield ['rates.json', 3];
+
+        yield ['rates2.json', 5];
     }
 
     /**
@@ -47,6 +49,10 @@ class RatesResponseTest extends TestCase
     {
         $this->assertListResponse($fixtureName, $count, Rate::class, function (Rate $rate) {
             $this->assertGreaterThan(0, $rate->price);
+
+            foreach ($rate->surcharges as $surcharge) {
+                $this->assertGreaterThan(0, $surcharge->price);
+            }
         });
     }
 
