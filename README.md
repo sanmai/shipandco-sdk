@@ -34,9 +34,9 @@ Features:
 
 This library is far from offering a complete set of API methods, but it should do the most important bits.
 
-**Something is amiss?(()) [Let us know](https://github.com/sanmai/shipandco-sdk/issues/new/choose), or, even better, send a PR!
+**Something is amiss?** [Let us know](https://github.com/sanmai/shipandco-sdk/issues/new/choose), or, even better, send a PR!
 
-[Ship&amp;co API documentation.](https://developer.shipandco.com/en/)
+[Ship&amp;co API documentation](https://developer.shipandco.com/en/) for your reference.
 
 ## Installation
 
