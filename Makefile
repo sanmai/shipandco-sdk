@@ -82,7 +82,7 @@ ci-cs: prerequisites
 ##############################################################
 
 .PHONY: test
-test: analyze phpunit composer-validate
+test: analyze phpunit composer-validate yamllint
 
 .PHONY: composer-validate
 composer-validate: test-prerequisites
@@ -141,6 +141,10 @@ build/cache:
 .PHONY: report-php-version
 report-php-version:
 	# Using $(PHP)
+
+.PHONY: yamllint
+yamllint:
+	find .github/workflows/ -name \*.y*ml -print0 | xargs -n 1 -0 yamllint --no-warnings
 
 ##############################################################
 # Quick development testing procedure                        #

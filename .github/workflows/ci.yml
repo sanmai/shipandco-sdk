@@ -1,9 +1,12 @@
-name: Unit Testing
+# yamllint disable rule:line-length
+# yamllint disable rule:braces
+
+name: Continuous Integration
 
 on:
   pull_request:
   push:
-    branches:    
+    branches:
       - main
 
 jobs:
@@ -14,12 +17,14 @@ jobs:
       matrix:
         php-version: ['7.3', '7.4']
         dependencies: ['']
+        make-args: ['']
         include:
           - { php-version: '7.3', dependencies: '--prefer-lowest' }
           - { php-version: '8.0', dependencies: '--ignore-platform-req=php' }
+          - { php-version: '7.3', make-args: 'PHPUNIT_GROUP=integration' }
 
     continue-on-error: ${{ matrix.php-version == '8.0' }}
-    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }}
+    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
       - name: Checkout code
@@ -29,8 +34,7 @@ jobs:
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php-version }}
-          extensions:
-          coverage: none
+          coverage: pcov
           tools: composer:v2
 
       - name: Cache dependencies
@@ -46,11 +50,20 @@ jobs:
         run: |
           composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
 
-      - name: Execute tests
-        run: |
-          make ci-test
-
       - name: Validate composer.json
         run: |
           composer validate --strict
           composer normalize --diff --dry-run
+
+      - name: Execute tests
+        env:
+          SHIPANDCO_ACCESS_TOKEN: ${{ secrets.SHIPANDCO_ACCESS_TOKEN }}
+        run: |
+          make ci-test ${{ matrix.make-args }}
+
+      - name: Upload coverage report
+        continue-on-error: true
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          php vendor/bin/php-coveralls -v

@@ -1,4 +1,6 @@
-name: Integration Testing
+# yamllint disable rule:line-length
+
+name: Code Style
 
 on:
   pull_request:
@@ -12,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.3']
+        php-version: ['7.4']
 
     name: PHP ${{ matrix.php-version }}
 
@@ -23,7 +25,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions:
           tools: composer:v2
 
       - name: Cache dependencies
@@ -39,8 +40,6 @@ jobs:
         run: |
           composer install --prefer-dist --no-interaction --no-progress
 
-      - name: Execute integration tests
-        env:
-          SHIPANDCO_ACCESS_TOKEN: ${{ secrets.SHIPANDCO_ACCESS_TOKEN }}
+      - name: Check code style
         run: |
-          make ci-test PHPUNIT_GROUP=integration
+          php vendor/bin/php-cs-fixer --using-cache=no --diff --dry-run --stop-on-violation --verbose fix
