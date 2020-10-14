@@ -236,6 +236,15 @@ foreach ($response as $rate) {
 
 #### Create Shipment
 
+As far as shipments go, it's important to understand that requests for domestic shipments over Japan (Sagawa, Yamato, YuPack) are a bit different from an International shipments:
+
+- For domestic shipments addresses (to and from) should be in Japanese. The opposite is true for International shipments.
+- No city field is needed for domestic shipments (city goes to `address_1`).
+- No need for most details about product: on the contrary, for International shipments, details about products are used for customs clearance purpose.
+- For domestic shipments, if it's not a cash on delivery shipment, product name only should work (just to show on the label wha'ts inside the box).
+
+This SDK poses no restrictions on the number of fields specified in a request (other than that they should exist), thus it is a user responsibility (yours) to set correct fields for each type of request.
+
 ```php
 $request = new \ShipAndCoSDK\Requests\CreateShipmentRequest();
 
@@ -323,7 +332,7 @@ foreach ($response->delivery->tracking_numbers as $trackingNumber) {
 }
 ```
 
-To safeguard you against unexpected billing charges, shipment requests are [using the test environment](https://developer.shipandco.com/en/#t-ship_post) by default (thus creating dummy labels). Make sure to set `test` to `false` in `setup` section to receive live labels.
+To safeguard you against unexpected billing charges, shipment requests are [using the test environment](https://developer.shipandco.com/en/#t-ship_post) _by default_ (thus creating dummy labels). Make sure to set `test` to `false` in `setup` section to receive live labels.
 
 Just like so:
 
