@@ -112,7 +112,7 @@ if ($response->hasErrors()) {
     return; // This is a failure.
 }
 
-/** @var $response \ShipAndCoSDK\Responses\ShipmentResponse */
+/** @var \ShipAndCoSDK\Responses\ShipmentResponse $response */
 echo "{$response->id}\t{$response->state}\n";
 
 echo "Shipping Label: {$response->delivery->label}\n";

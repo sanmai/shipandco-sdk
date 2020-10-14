@@ -33,6 +33,8 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * Common address fields, good for both mailing addresses and warehouses.
+ *
+ * @template-implements IteratorAggregate<string, mixed>
  */
 abstract class Address implements IteratorAggregate
 {

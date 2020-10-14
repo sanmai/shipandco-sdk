@@ -50,7 +50,7 @@ use ShipAndCoSDK\Responses\Types\Address;
  * @property-read string|null $province
  * @property-read string|null $province_kanji
  * @property-read string|null $zip
- * @property-read DatedWrapper $address
+ * @property-read Address $address
  */
 final class DatedWrapper extends CommonDatedWrapper
 {

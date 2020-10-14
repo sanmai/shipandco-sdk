@@ -34,11 +34,11 @@ use Symfony\Component\HttpFoundation\Response as HttpResponse;
 /**
  * Ship&Co API Client.
  *
- * @method Responses\CarriersResponse|Responses\Types\Carrier[]|Responses\Bad\ErrorResponse                                         sendCarriersRequest(Requests\CarriersRequest $request)
- * @method Responses\AddressesResponse|Responses\Types\Address[]|Responses\Types\Address\DatedWrapper[]|Responses\Bad\ErrorResponse sendAddressesRequest(Requests\AddressesRequest $request)
- * @method Responses\AddressesResponse|Responses\Types\Address[]|Responses\Types\Address\DatedWrapper[]|Responses\Bad\ErrorResponse sendWarehousesRequest(Requests\WarehousesRequest $request)
- * @method Responses\RatesResponse|Responses\Types\Rate[]|Responses\Bad\ErrorResponse                                               sendRatesRequest(Requests\RatesRequest $request)
- * @method Responses\ShipmentResponse|Responses\Bad\ErrorResponse                                                                   sendCreateShipmentRequest(Requests\CreateShipmentRequest $request)
+ * @method Responses\CarriersResponse|Responses\Types\Carrier[]               sendCarriersRequest(Requests\CarriersRequest $request)
+ * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendAddressesRequest(Requests\AddressesRequest $request)
+ * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendWarehousesRequest(Requests\WarehousesRequest $request)
+ * @method Responses\RatesResponse|Responses\Types\Rate[]                     sendRatesRequest(Requests\RatesRequest $request)
+ * @method Responses\ShipmentResponse                                         sendCreateShipmentRequest(Requests\CreateShipmentRequest $request)
  */
 final class Client extends CommonClient
 {

@@ -135,6 +135,8 @@ class LaravelServiceProviderTest extends TestCase
 
     /**
      * @depends testRegister
+     *
+     * @psalm-suppress DeprecatedMethod
      */
     public function testWithCustomTimeout(callable $savedCallback)
     {

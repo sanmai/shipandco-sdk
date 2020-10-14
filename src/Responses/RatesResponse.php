@@ -33,13 +33,11 @@ use CommonSDK\Contracts\Response;
 use ShipAndCoSDK\Responses\Types\Rate;
 
 /**
- * @template-implements IteratorAggregate<Rate>
+ * @template-implements \IteratorAggregate<Rate>
  */
 final class RatesResponse implements Response, ItemList, \IteratorAggregate
 {
     use ListContainer;
-
-    private $to_address;
 
     private const LIST_TYPE = Rate::class;
 }

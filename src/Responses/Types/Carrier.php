@@ -33,9 +33,9 @@ use ShipAndCoSDK\Common\DatedWrapper;
 use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
 
 /**
- * @property-read string            $type
- * @property-read string            $state
- * @property-read Credentials       $credentials
+ * @property-read string $type
+ * @property-read string $state
+ * @property-read Credentials $credentials
  */
 final class Carrier extends DatedWrapper
 {

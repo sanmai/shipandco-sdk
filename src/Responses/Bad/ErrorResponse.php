@@ -41,9 +41,9 @@ use ShipAndCoSDK\Responses\Bad\ErrorResponse\Detail;
  * @property-read bool|null $auth
  * @property-read string|null $debug_id
  * @property-read string|null $code
- * @property-read string $message
+ * @property-read string|null $message
  * @property-read Detail[]|array<Detail> $details
- * @property-read string $link
+ * @property-read string|null $link
  * @property-read string|null $description
  */
 final class ErrorResponse implements Response, HasErrorCode, Countable
@@ -62,7 +62,7 @@ final class ErrorResponse implements Response, HasErrorCode, Countable
     /**
      * @JMS\Type("string")
      *
-     * @var ?string
+     * @var string|null
      */
     private $debug_id;
 
@@ -76,7 +76,7 @@ final class ErrorResponse implements Response, HasErrorCode, Countable
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
     private $message;
 

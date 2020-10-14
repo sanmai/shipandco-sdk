@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <psalm
-    totallyTyped="true"
-    allowPhpStormGenerics="true"
     cacheDirectory="build/"
-    errorLevel="5"
+    errorLevel="2"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -12,8 +10,52 @@
     <projectFiles>
         <directory name="src" />
         <directory name="examples" />
+        <directory name="tests/Integration" />
         <ignoreFiles>
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <MissingConstructor errorLevel="suppress" />
+        <PropertyNotSetInConstructor errorLevel="suppress" />
+
+        <ForbiddenCode>
+            <errorLevel type="suppress">
+                <directory name="examples" />
+            </errorLevel>
+        </ForbiddenCode>
+
+        <PossiblyUndefinedGlobalVariable>
+            <errorLevel type="suppress">
+                <directory name="examples" />
+            </errorLevel>
+        </PossiblyUndefinedGlobalVariable>
+
+        <MissingReturnType>
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </MissingReturnType>
+
+        <RedundantCondition>
+            <errorLevel type="suppress">
+                <file name="tests/Integration/DebuggingLogger.php" />
+            </errorLevel>
+        </RedundantCondition>
+
+        <PossiblyInvalidMethodCall>
+            <errorLevel type="suppress">
+                <directory name="examples" />
+                <directory name="tests/Integration" />
+            </errorLevel>
+        </PossiblyInvalidMethodCall>
+
+        <PossibleRawObjectIteration>
+            <errorLevel type="suppress">
+                <directory name="examples" />
+                <directory name="tests/Integration" />
+            </errorLevel>
+        </PossibleRawObjectIteration>
+    </issueHandlers>
 </psalm>

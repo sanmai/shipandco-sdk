@@ -33,7 +33,7 @@ use CommonSDK\Contracts\Response;
 use ShipAndCoSDK\Responses\Types\Address\DatedWrapper;
 
 /**
- * @template-implements IteratorAggregate<DatedWrapper>
+ * @template-implements \IteratorAggregate<DatedWrapper>
  */
 final class AddressesResponse implements Response, ItemList, \IteratorAggregate
 {

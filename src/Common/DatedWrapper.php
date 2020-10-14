@@ -31,7 +31,7 @@ use DateTimeImmutable;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * @property-read string            $id
+ * @property-read string $id
  * @property-read DateTimeImmutable $created_at
  * @property-read DateTimeImmutable $updated_at
  */

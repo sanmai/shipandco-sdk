@@ -33,7 +33,7 @@ use CommonSDK\Contracts\Response;
 use ShipAndCoSDK\Responses\Types\Carrier;
 
 /**
- * @template-implements IteratorAggregate<Carrier>
+ * @template-implements \IteratorAggregate<Carrier>
  */
 final class CarriersResponse implements Response, ItemList, \IteratorAggregate
 {

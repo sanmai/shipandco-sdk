@@ -33,13 +33,19 @@ use Tests\ShipAndCoSDK\Fixtures\FixtureLoader;
 
 abstract class TestCase extends DeserializationTestCase
 {
-    protected function assertSameAsJSON(string $json, $request)
+    /**
+     * @param mixed $input
+     */
+    protected function assertSameAsJSON(string $json, $input)
     {
-        $serializedString = $this->getSerializer()->serialize($request, Request::SERIALIZATION_JSON);
+        $serializedString = $this->getSerializer()->serialize($input, Request::SERIALIZATION_JSON);
 
         $this->assertSame($json, $serializedString);
     }
 
+    /**
+     * @param mixed $input
+     */
     protected function assertSameAsFixture(string $filename, $input)
     {
         $actualJson = $this->getSerializer()->serialize($input, Request::SERIALIZATION_JSON);
