@@ -36,7 +36,7 @@ This library is far from offering a complete set of API methods, but it should d
 
 **Something is amiss?** [Let us know](https://github.com/sanmai/shipandco-sdk/issues/new/choose), or, even better, send a PR!
 
-[Ship&amp;co API documentation](https://developer.shipandco.com/en/) for your reference.
+[Ship&amp;co API documentation](https://developer.shipandco.com/en/) for your reference. Please note this is _not_ in any way an official SDK of Ship&co, therefore most likely they won't be able to answer any questions about this SDK.
 
 ## Installation
 
@@ -51,7 +51,7 @@ This SDK requires at least PHP 7.3. It was tested to work under PHP 7.3, 7.4, an
 Major parts are:
 
 - Client. Client is the object you send all requests through.
-- Requests. There are several request objects for most requests the API offers. They follow a fluent interface paradigm, where if the original request has a certain property, a request here will have it too. More on this below.  
+- Requests. There are several request objects for most requests the API offers. They follow a fluent interface paradigm, where if the original request has a certain property, a request here will have it too. More on this below.
 - Responses. After sending a request you'll have a response object, which could be an actual reponse, or an error response. All responses follow the same fluent paradigm.
 
 ## Usage
@@ -343,7 +343,3 @@ $request->setup->test = false;
 ## License
 
 This project is licensed [under the terms of the MIT license](LICENSE).
-
-
-
-
