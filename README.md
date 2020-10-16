@@ -104,7 +104,7 @@ if ($response->hasErrors()) {
 
 ### Requests
 
-For every request there's a runnable example. E.g. running this:
+For every implemented request [there's a runnable example](examples). E.g. running this:
 
 ```bash
 export SHIPANDCO_ACCESS_TOKEN=... (your token)
