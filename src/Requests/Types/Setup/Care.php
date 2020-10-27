@@ -28,7 +28,7 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types\Setup;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Setup\Care as CommonCare;
 
 /**
@@ -36,7 +36,7 @@ use ShipAndCoSDK\Common\Setup\Care as CommonCare;
  * @property-write bool $side_up
  * @property-write bool $valuable_goods
  */
-final class Care extends CommonCare implements Property
+final class Care extends CommonCare implements ReadableRequestProperty
 {
     use PropertyWrite;
 }

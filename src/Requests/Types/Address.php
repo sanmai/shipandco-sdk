@@ -28,7 +28,7 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Address as CommonAddress;
 
 /**
@@ -50,7 +50,7 @@ use ShipAndCoSDK\Common\Address as CommonAddress;
  * @property-write string|null $province_kanji
  * @property-write string|null $zip
  */
-final class Address extends CommonAddress implements Property
+final class Address extends CommonAddress implements ReadableRequestProperty
 {
     use PropertyWrite;
 }

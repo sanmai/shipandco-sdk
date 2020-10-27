@@ -28,14 +28,14 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types\Setup;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Setup\CashOnDelivery as CommonCashOnDelivery;
 
 /**
  * @property-write float $amount
  * @property-write float $tax
  */
-final class CashOnDelivery extends CommonCashOnDelivery implements Property
+final class CashOnDelivery extends CommonCashOnDelivery implements ReadableRequestProperty
 {
     use PropertyWrite;
 }

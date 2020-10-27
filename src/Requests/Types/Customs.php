@@ -28,14 +28,14 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Customs as CommonCustoms;
 
 /**
  * @property-write bool $duty_paid
  * @property-write string $content_type
  */
-final class Customs extends CommonCustoms implements Property
+final class Customs extends CommonCustoms implements ReadableRequestProperty
 {
     use PropertyWrite;
 }

@@ -28,7 +28,7 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Product as CommonProduct;
 
 /**
@@ -38,7 +38,7 @@ use ShipAndCoSDK\Common\Product as CommonProduct;
  * @property-write string $hs_code
  * @property-write string $origin_country
  */
-final class Product extends CommonProduct implements Property
+final class Product extends CommonProduct implements ReadableRequestProperty
 {
     use PropertyWrite;
 }

@@ -29,7 +29,7 @@ namespace ShipAndCoSDK\Requests\Types;
 
 use CommonSDK\Concerns\ObjectPropertyRead;
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use DateTimeInterface;
 use JMS\Serializer\Annotation as JMS;
 use ShipAndCoSDK\Common\Setup as CommonSetup;
@@ -56,7 +56,7 @@ use ShipAndCoSDK\Requests\Types\Setup\CashOnDelivery;
  * @property-write int $print_start_location
  * @property-write bool $test
  */
-final class Setup extends CommonSetup implements Property
+final class Setup extends CommonSetup implements ReadableRequestProperty
 {
     use PropertyWrite;
     use ObjectPropertyRead;

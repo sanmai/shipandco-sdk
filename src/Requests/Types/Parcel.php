@@ -28,7 +28,7 @@ declare(strict_types=1);
 namespace ShipAndCoSDK\Requests\Types;
 
 use CommonSDK\Concerns\PropertyWrite;
-use CommonSDK\Contracts\Property;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use ShipAndCoSDK\Common\Parcel as CommonParcel;
 
 /**
@@ -39,7 +39,7 @@ use ShipAndCoSDK\Common\Parcel as CommonParcel;
  * @property-write float $weight
  * @property-write string $package
  */
-final class Parcel extends CommonParcel implements Property
+final class Parcel extends CommonParcel implements ReadableRequestProperty
 {
     use PropertyWrite;
 }
