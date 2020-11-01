@@ -24,7 +24,7 @@
         "psr/log": "^1.0",
         "sanmai/json-serializer": "^0.1.1",
         "sanmai/pipeline": "^5",
-        "sanmai/sdk-common": "^0.3.1",
+        "sanmai/sdk-common": "^0.3.1 || ^0.4.0",
         "sanmai/version-info": "^0.2.0",
         "symfony/http-foundation": "^4.4.7 || ^5.0.7"
     },
