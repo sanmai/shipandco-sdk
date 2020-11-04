@@ -99,8 +99,28 @@ class ErrorResponsesTest extends TestCase
         );
     }
 
+    public function test_it_returns_correct_message()
+    {
+        $error = $this->deserializeResponse('{"message":"foo", "description":"bar", "debug_id":"baz"}');
+
+        $this->assertSame('foo', $error->getMessage());
+
+        $error = $this->deserializeResponse('{"description":"bar", "debug_id":"baz"}');
+
+        $this->assertSame('bar', $error->getMessage());
+
+        $error = $this->deserializeResponse('{"debug_id":"baz"}');
+
+        $this->assertSame('baz', $error->getMessage());
+    }
+
+    protected function deserializeResponse(string $json): ErrorResponse
+    {
+        return $this->getSerializer()->deserialize($json, ErrorResponse::class);
+    }
+
     /** @return ErrorResponse */
-    protected function loadFixture(string $filename)
+    protected function loadFixture(string $filename): ErrorResponse
     {
         return $this->loadFixtureWithType($filename, ErrorResponse::class);
     }

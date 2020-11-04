@@ -27,7 +27,9 @@ declare(strict_types=1);
 
 namespace ShipAndCoSDK;
 
+use CommonSDK\Contracts\Response;
 use CommonSDK\Types\Client as CommonClient;
+use Psr\Http\Message\ResponseInterface;
 use ShipAndCoSDK\Responses\Bad\ErrorResponse;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
@@ -49,4 +51,8 @@ final class Client extends CommonClient
         HttpResponse::HTTP_TOO_MANY_REQUESTS          => ErrorResponse::class, // 429	Too many requests
         HttpResponse::HTTP_INTERNAL_SERVER_ERROR      => ErrorResponse::class, // 500	Internal errors
     ];
+
+    protected function postDeserialize(ResponseInterface $httpResponse, Response $response): void
+    {
+    }
 }

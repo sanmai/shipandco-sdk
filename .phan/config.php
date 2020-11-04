@@ -341,6 +341,7 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
+        'vendor/psr/http-message/src/',
         'vendor/doctrine/cache/lib/Doctrine/Common/Cache',
         'vendor/gamez/psr-testlogger/src',
         'vendor/guzzlehttp/guzzle/src',
