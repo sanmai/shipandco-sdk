@@ -27,6 +27,7 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Integration;
 
+use Doctrine\Common\Cache\FilesystemCache;
 use ShipAndCoSDK\Client;
 use ShipAndCoSDK\ClientBuilder;
 
@@ -43,7 +44,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $builder = new ClientBuilder();
         $builder->setToken(self::getEnvOrSkipTest(self::SHIPANDCO_ACCESS_TOKEN));
 
-        if (\is_dir('build/cache/')) {
+        if (\is_dir('build/cache/') && \class_exists(FilesystemCache::class)) {
             $builder->setCacheDir('build/cache/', true);
         }
 
