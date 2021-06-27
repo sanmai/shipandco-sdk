@@ -277,6 +277,21 @@ class ShipmentResponseTest extends TestCase
                 ],
             ],
         ]];
+
+        yield ['shipment_fedex.json', [
+            'id'       => 'API-QWMHHRLQS8',
+            'products' => [],
+            'parcels'  => [],
+            'delivery' => [
+                'tracking_numbers' => [],
+                'warnings'         => [
+                    [
+                        'message' => 'etd_not_available',
+                        'type'    => 'label',
+                    ],
+                ],
+            ],
+        ]];
     }
 
     /**

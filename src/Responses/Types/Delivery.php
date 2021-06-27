@@ -78,9 +78,9 @@ final class Delivery
     private $invoice;
 
     /**
-     * @JMS\Type("array<string>")
+     * @JMS\Type("array")
      *
-     * @var string[]
+     * @var array
      */
     private $warnings = [];
 }

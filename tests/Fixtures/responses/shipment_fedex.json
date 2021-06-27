@@ -1,0 +1,11 @@
+{
+   "id": "API-QWMHHRLQS8",
+   "delivery" : {
+      "warnings" : [
+         {
+            "message" : "etd_not_available",
+            "type" : "label"
+         }
+      ]
+   }
+}
