@@ -58,7 +58,7 @@ final class ErrorsTest extends TestCase
             $this->assertNotEmpty($message->getMessage());
         }
 
-        $this->assertNotEmpty($response->details);
+        $this->assertNotEmpty($response->message);
         $this->assertIsIterable($response->details);
 
         foreach ($response->details as $detail) {
