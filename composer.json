@@ -32,7 +32,7 @@
         "doctrine/annotations": "<1.10.3"
     },
     "require-dev": {
-        "doctrine/cache": "^1.10 || ^2.0",
+        "doctrine/cache": "<2",
         "ergebnis/composer-normalize": "^2.8",
         "friendsofphp/php-cs-fixer": "^2.14",
         "gamez/psr-testlogger": "^3.0",
