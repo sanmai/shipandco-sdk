@@ -15,15 +15,14 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.3', '7.4']
+        php-version: ['7.3', '7.4', '8.0', '8.1']
         dependencies: ['']
         make-args: ['']
         include:
           - { php-version: '7.3', dependencies: '--prefer-lowest' }
-          - { php-version: '8.0', dependencies: '--ignore-platform-req=php' }
           - { php-version: '7.3', make-args: 'PHPUNIT_GROUP=integration' }
 
-    continue-on-error: ${{ matrix.php-version == '8.0' }}
+    continue-on-error: ${{ matrix.php-version == '8.1' }}
     name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
