@@ -44,6 +44,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $builder = new ClientBuilder();
         $builder->setToken(self::getEnvOrSkipTest(self::SHIPANDCO_ACCESS_TOKEN));
 
+        /** @psalm-suppress DeprecatedClass */
         if (\is_dir('build/cache/') && \class_exists(FilesystemCache::class)) {
             $builder->setCacheDir('build/cache/', true);
         }
