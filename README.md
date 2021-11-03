@@ -1,7 +1,6 @@
 # Ship&amp;co API integration SDK
 
 [![Latest Stable Version](https://poser.pugx.org/sanmai/shipandco-sdk/v/stable)](https://packagist.org/packages/sanmai/shipandco-sdk)
-[![Build Status](https://travis-ci.com/sanmai/shipandco-sdk.svg?branch=main)](https://travis-ci.com/sanmai/shipandco-sdk)
 [![Coverage Status](https://coveralls.io/repos/github/sanmai/shipandco-sdk/badge.svg?branch=main)](https://coveralls.io/github/sanmai/shipandco-sdk?branch=main)
 
 Features:
