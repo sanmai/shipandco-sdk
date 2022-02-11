@@ -1,13 +1,13 @@
 {
     "name": "sanmai/shipandco-sdk",
-    "type": "library",
     "description": "Ship&co API SDK",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "shipping provider",
         "PHP SDK",
         "delivery"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Alexey Kopytko",
@@ -16,6 +16,9 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "issues": "https://github.com/sanmai/shipandco-sdk/issues"
+    },
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
@@ -27,9 +30,6 @@
         "sanmai/sdk-common": "^0.5.2",
         "sanmai/version-info": "^0.2.0",
         "symfony/http-foundation": "^4.4.7 || ^5.0.7"
-    },
-    "conflict": {
-        "doctrine/annotations": "<1.10.3"
     },
     "require-dev": {
         "doctrine/cache": "<2",
@@ -43,22 +43,12 @@
         "phpunit/phpunit": "^9.3",
         "vimeo/psalm": ">=3.0.16"
     },
+    "conflict": {
+        "doctrine/annotations": "<1.10.3"
+    },
     "suggest": {
         "doctrine/cache": "For metadata caching",
         "monolog/monolog": "For advanced logging and debugging"
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "0.1.x-dev"
-        },
-        "test-only-require": [
-            "php-coveralls/php-coveralls",
-            "phpunit/phpunit"
-        ]
     },
     "autoload": {
         "psr-4": {
@@ -71,7 +61,13 @@
             "CommonSDK\\Tests\\Common\\": "vendor/sanmai/sdk-common/tests/Common/"
         }
     },
-    "support": {
-        "issues": "https://github.com/sanmai/shipandco-sdk/issues"
+    "config": {
+        "allow-plugins": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
     }
 }
