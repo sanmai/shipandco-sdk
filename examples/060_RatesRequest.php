@@ -79,7 +79,7 @@ $request->setup->date = new DateTime('+1 week');
 
 $response = $client->sendRatesRequest($request);
 
-\var_dump(\count($response));
+var_dump(\count($response));
 
 foreach ($response as $rate) {
     echo "{$rate->carrier}\t{$rate->service}\t{$rate->price} {$rate->currency}\n";

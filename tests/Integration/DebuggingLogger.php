@@ -49,10 +49,10 @@ final class DebuggingLogger implements LoggerInterface
     public function log($level, $message, array $context = [])
     {
         if ($context) {
-            $message = \strtr($message, \iterator_to_array(self::context2replacements($context), true));
+            $message = strtr($message, iterator_to_array(self::context2replacements($context), true));
         }
 
-        \fwrite(self::WRITE_LOG_TO_FILE ? $this->getLogFileHandle() : \STDERR, "\n{$message}\n\n");
+        fwrite(self::WRITE_LOG_TO_FILE ? $this->getLogFileHandle() : \STDERR, "\n{$message}\n\n");
     }
 
     private const LOG_FILE = 'delivery-requests.log';
@@ -66,7 +66,7 @@ final class DebuggingLogger implements LoggerInterface
 
         if (!$fh) {
             $reflection = new \ReflectionClass(\Composer\Autoload\ClassLoader::class);
-            $fh = \fopen(\dirname((string) $reflection->getFileName(), 3).DIRECTORY_SEPARATOR.self::LOG_FILE, 'a');
+            $fh = fopen(\dirname((string) $reflection->getFileName(), 3).DIRECTORY_SEPARATOR.self::LOG_FILE, 'a');
         }
 
         \assert(\is_resource($fh));

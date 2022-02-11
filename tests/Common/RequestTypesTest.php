@@ -83,7 +83,7 @@ class RequestTypesTest extends TestCase
             'setup'        => new Setup(),
         ];
 
-        $instance = $this->getShipmentFieldsExample(...\array_values($args));
+        $instance = $this->getShipmentFieldsExample(...array_values($args));
 
         foreach ($args as $field => $type) {
             $this->assertNotNull($instance->{$field});
