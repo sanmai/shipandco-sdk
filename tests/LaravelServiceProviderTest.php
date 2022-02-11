@@ -144,7 +144,7 @@ class LaravelServiceProviderTest extends TestCase
             'services.shipandco' => [
                 'token'   => 'bar',
                 'timeout' => 100000,
-                'cache'   => \sys_get_temp_dir(),
+                'cache'   => sys_get_temp_dir(),
             ],
         ]));
 

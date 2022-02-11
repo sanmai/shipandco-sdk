@@ -303,11 +303,11 @@ class ShipmentResponseTest extends TestCase
 
         $this->assertStringStartsWith('API-', $response->id);
 
-        $responseArray = \json_decode($this->getSerializer()->serialize($response), true);
+        $responseArray = json_decode($this->getSerializer()->serialize($response), true);
 
         if (\in_array('--debug', $_SERVER['argv']) && $responseArray !== $expected) {
             echo "\n";
-            \var_export([$fixtureName, $responseArray]);
+            var_export([$fixtureName, $responseArray]);
             echo "\n";
         }
 

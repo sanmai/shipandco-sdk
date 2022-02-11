@@ -143,7 +143,7 @@ final class ClientBuilder implements LoggerAwareInterface
             $this->serializer = $this->buildSerializer();
         }
 
-        $this->http = $this->http ?? new GuzzleClient(\array_merge([
+        $this->http = $this->http ?? new GuzzleClient(array_merge([
             'base_uri' => $this->baseUrl,
             'timeout'  => $this->timeout,
             'headers'  => [
@@ -178,7 +178,7 @@ final class ClientBuilder implements LoggerAwareInterface
 
     public function setUserAgent(string $product, string $versionDetails): self
     {
-        $this->userAgentPostfix = \sprintf('%s/%s', $product, $versionDetails);
+        $this->userAgentPostfix = sprintf('%s/%s', $product, $versionDetails);
 
         return $this;
     }

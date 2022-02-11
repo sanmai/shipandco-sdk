@@ -68,7 +68,7 @@ final class DatedWrapper extends CommonDatedWrapper
      */
     public function __get(string $property)
     {
-        if (\property_exists($this, $property)) {
+        if (property_exists($this, $property)) {
             return $this->{$property};
         }
 

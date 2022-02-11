@@ -33,7 +33,7 @@ use ShipAndCoSDK\ClientBuilder;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    const SHIPANDCO_ACCESS_TOKEN = 'SHIPANDCO_ACCESS_TOKEN';
+    public const SHIPANDCO_ACCESS_TOKEN = 'SHIPANDCO_ACCESS_TOKEN';
 
     /**
      * @psalm-suppress MixedArgument
@@ -45,7 +45,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $builder->setToken(self::getEnvOrSkipTest(self::SHIPANDCO_ACCESS_TOKEN));
 
         /** @psalm-suppress DeprecatedClass */
-        if (\is_dir('build/cache/') && \class_exists(FilesystemCache::class)) {
+        if (is_dir('build/cache/') && class_exists(FilesystemCache::class)) {
             $builder->setCacheDir('build/cache/', true);
         }
 
@@ -58,10 +58,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
     private static function getEnvOrSkipTest(string $varname): string
     {
-        if (false === \getenv($varname)) {
-            self::markTestSkipped(\sprintf('Integration testing disabled (%s missing).', $varname));
+        if (false === getenv($varname)) {
+            self::markTestSkipped(sprintf('Integration testing disabled (%s missing).', $varname));
         }
 
-        return (string) \getenv($varname);
+        return (string) getenv($varname);
     }
 }
