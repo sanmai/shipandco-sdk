@@ -44,6 +44,13 @@ abstract class Setup
      *
      * @var string
      */
+    protected $carrier_id;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
     protected $service;
 
     /**

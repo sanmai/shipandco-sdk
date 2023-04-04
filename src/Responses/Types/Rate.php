@@ -33,6 +33,7 @@ use ShipAndCoSDK\Responses\Types\Rate\Surcharge;
 
 /**
  * @property-read string            $carrier
+ * @property-read string            $carrier_id
  * @property-read string            $service
  * @property-read string            $currency
  * @property-read float             $price
@@ -48,6 +49,13 @@ final class Rate
      * @var string
      */
     private $carrier;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $carrier_id;
 
     /**
      * @JMS\Type("string")
