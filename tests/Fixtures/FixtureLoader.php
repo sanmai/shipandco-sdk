@@ -27,6 +27,9 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Fixtures;
 
+use function file_get_contents;
+use function file_put_contents;
+
 class FixtureLoader
 {
     public static function loadResponse(string $filename): string

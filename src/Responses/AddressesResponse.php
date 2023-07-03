@@ -30,12 +30,13 @@ namespace ShipAndCoSDK\Responses;
 use CommonSDK\Concerns\ListContainer;
 use CommonSDK\Contracts\ItemList;
 use CommonSDK\Contracts\Response;
+use IteratorAggregate;
 use ShipAndCoSDK\Responses\Types\Address\DatedWrapper;
 
 /**
  * @template-implements \IteratorAggregate<DatedWrapper>
  */
-final class AddressesResponse implements Response, ItemList, \IteratorAggregate
+final class AddressesResponse implements Response, ItemList, IteratorAggregate
 {
     use ListContainer;
 

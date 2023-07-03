@@ -30,12 +30,13 @@ namespace ShipAndCoSDK\Responses;
 use CommonSDK\Concerns\ListContainer;
 use CommonSDK\Contracts\ItemList;
 use CommonSDK\Contracts\Response;
+use IteratorAggregate;
 use ShipAndCoSDK\Responses\Types\Rate;
 
 /**
  * @template-implements \IteratorAggregate<Rate>
  */
-final class RatesResponse implements Response, ItemList, \IteratorAggregate
+final class RatesResponse implements Response, ItemList, IteratorAggregate
 {
     use ListContainer;
 

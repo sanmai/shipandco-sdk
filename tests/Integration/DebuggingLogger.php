@@ -27,8 +27,20 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Integration;
 
+use Generator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
+use ReflectionClass;
+
+use function strtr;
+use function iterator_to_array;
+use function fwrite;
+use function fopen;
+use function dirname;
+use function assert;
+use function is_resource;
+
+use const STDERR;
 
 final class DebuggingLogger implements LoggerInterface
 {
@@ -52,7 +64,7 @@ final class DebuggingLogger implements LoggerInterface
             $message = strtr($message, iterator_to_array(self::context2replacements($context), true));
         }
 
-        fwrite(self::WRITE_LOG_TO_FILE ? $this->getLogFileHandle() : \STDERR, "\n{$message}\n\n");
+        fwrite(self::WRITE_LOG_TO_FILE ? $this->getLogFileHandle() : STDERR, "\n{$message}\n\n");
     }
 
     private const LOG_FILE = 'delivery-requests.log';
@@ -65,11 +77,11 @@ final class DebuggingLogger implements LoggerInterface
         static $fh;
 
         if (!$fh) {
-            $reflection = new \ReflectionClass(\Composer\Autoload\ClassLoader::class);
-            $fh = fopen(\dirname((string) $reflection->getFileName(), 3).DIRECTORY_SEPARATOR.self::LOG_FILE, 'a');
+            $reflection = new ReflectionClass(\Composer\Autoload\ClassLoader::class);
+            $fh = fopen(dirname((string) $reflection->getFileName(), 3).DIRECTORY_SEPARATOR.self::LOG_FILE, 'a');
         }
 
-        \assert(\is_resource($fh));
+        assert(is_resource($fh));
 
         return $fh;
     }
@@ -77,7 +89,7 @@ final class DebuggingLogger implements LoggerInterface
     /**
      * @param array<string, string> $context
      */
-    private static function context2replacements($context): \Generator
+    private static function context2replacements($context): Generator
     {
         foreach ($context as $key => $value) {
             yield '{'.$key.'}' => $value;

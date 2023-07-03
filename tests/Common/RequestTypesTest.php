@@ -35,6 +35,8 @@ use ShipAndCoSDK\Requests\Types\Setup;
 use ShipAndCoSDK\Requests\Types\Setup\Care;
 use ShipAndCoSDK\Requests\Types\Setup\CashOnDelivery;
 
+use function array_values;
+
 /**
  * @covers \ShipAndCoSDK\Requests\Types\Setup
  * @covers \ShipAndCoSDK\Responses\Types\Address\DatedWrapper
@@ -93,7 +95,7 @@ class RequestTypesTest extends TestCase
 
     private function getShipmentFieldsExample(...$args)
     {
-        return new class(...$args) {
+        return new class (...$args) {
             use ShipmentFields;
             use PropertyRead;
         };

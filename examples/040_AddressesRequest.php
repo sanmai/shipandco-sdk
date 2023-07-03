@@ -40,7 +40,7 @@ $request = new \ShipAndCoSDK\Requests\AddressesRequest();
 
 $response = $client->sendAddressesRequest($request);
 
-var_dump(\count($response));
+var_dump(count($response));
 
 foreach ($response as $value) {
     echo "{$value->id}\t{$value->created_at->format('Y-m-d')}\n";
