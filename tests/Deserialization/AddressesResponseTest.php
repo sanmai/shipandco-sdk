@@ -27,6 +27,7 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Deserialization;
 
+use DateTimeInterface;
 use ShipAndCoSDK\Responses\AddressesResponse;
 use ShipAndCoSDK\Responses\Types\Address\DatedWrapper;
 
@@ -48,8 +49,8 @@ class AddressesResponseTest extends TestCase
     {
         $this->assertListResponse($fixtureName, $count, DatedWrapper::class, function (DatedWrapper $address) {
             $this->assertNotNull($address->id);
-            $this->assertInstanceOf(\DateTimeInterface::class, $address->created_at);
-            $this->assertInstanceOf(\DateTimeInterface::class, $address->updated_at);
+            $this->assertInstanceOf(DateTimeInterface::class, $address->created_at);
+            $this->assertInstanceOf(DateTimeInterface::class, $address->updated_at);
 
             $this->assertNotNull($address->address);
 

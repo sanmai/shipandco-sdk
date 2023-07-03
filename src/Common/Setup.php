@@ -56,14 +56,14 @@ abstract class Setup
     /**
      * @JMS\Type("DateTimeInterface<'Y-m-d'>")
      *
-     * @var \DateTimeInterface
+     * @var DateTimeInterface
      */
     protected $shipment_date;
 
     /**
      * @JMS\Type("DateTimeInterface<'Y-m-d'>")
      *
-     * @var \DateTimeInterface
+     * @var DateTimeInterface
      */
     protected $date;
 

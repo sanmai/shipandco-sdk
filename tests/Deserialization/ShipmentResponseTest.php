@@ -29,6 +29,10 @@ namespace Tests\ShipAndCoSDK\Deserialization;
 
 use ShipAndCoSDK\Responses\ShipmentResponse;
 
+use function json_decode;
+use function in_array;
+use function var_export;
+
 /**
  * @covers \ShipAndCoSDK\Responses\ShipmentResponse
  */
@@ -136,7 +140,7 @@ class ShipmentResponseTest extends TestCase
                 'zip'       => '5670883',
             ],
             'products' => [
-                 [
+                [
                     'name'           => 'Basket ball',
                     'quantity'       => 2,
                     'price'          => 4850,
@@ -145,7 +149,7 @@ class ShipmentResponseTest extends TestCase
                 ],
             ],
             'parcels' => [
-                 [
+                [
                     'amount' => 1,
                     'depth'  => 10,
                     'height' => 10,
@@ -171,7 +175,7 @@ class ShipmentResponseTest extends TestCase
                 'carrier'          => 'japanpost',
                 'method'           => 'japanpost_ems',
                 'tracking_numbers' => [
-                     'EN027977320JP',
+                    'EN027977320JP',
                 ],
                 'label'    => 'https://storage.googleapis.com/dev-shipandco/labels/201901/example.pdf',
                 'warnings' => [
@@ -209,7 +213,7 @@ class ShipmentResponseTest extends TestCase
                 'zip'       => '1234567',
             ],
             'products' => [
-               [
+                [
                     'name'           => 'Basket ball',
                     'quantity'       => 2,
                     'price'          => 4850,
@@ -230,7 +234,7 @@ class ShipmentResponseTest extends TestCase
                     'hs_code'        => '',
                     'origin_country' => 'JP',
                 ],
-                 [
+                [
                     'name'           => 'Basket ball4',
                     'quantity'       => 2,
                     'price'          => 4850,
@@ -305,7 +309,7 @@ class ShipmentResponseTest extends TestCase
 
         $responseArray = json_decode($this->getSerializer()->serialize($response), true);
 
-        if (\in_array('--debug', $_SERVER['argv']) && $responseArray !== $expected) {
+        if (in_array('--debug', $_SERVER['argv']) && $responseArray !== $expected) {
             echo "\n";
             var_export([$fixtureName, $responseArray]);
             echo "\n";

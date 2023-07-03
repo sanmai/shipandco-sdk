@@ -68,9 +68,9 @@ $request = new \ShipAndCoSDK\Requests\RatesRequest();
 
 $response = $client->sendRatesRequest($request);
 
-if (\count($response) > 0) {
+if (count($response) > 0) {
     // Will not be printed because count() is zero here
-    echo 'Rates received: ', \count($response), "\n";
+    echo 'Rates received: ', count($response), "\n";
 }
 
 if ($response->hasErrors()) {

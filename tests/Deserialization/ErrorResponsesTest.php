@@ -29,8 +29,11 @@ namespace Tests\ShipAndCoSDK\Deserialization;
 
 use CommonSDK\Contracts\HasErrorCode;
 use CommonSDK\Contracts\Response;
-use function Pipeline\zip;
+
 use ShipAndCoSDK\Responses\Bad\ErrorResponse;
+
+use function Pipeline\zip;
+use function count;
 
 /**
  * @covers \ShipAndCoSDK\Responses\Bad\ErrorResponse
@@ -89,9 +92,11 @@ class ErrorResponsesTest extends TestCase
         $this->assertCount(0, $response);
         $this->assertTrue($response->hasErrors());
 
-        $this->assertCount(\count($errors), $response->getMessages());
+        $this->assertCount(count($errors), $response->getMessages());
 
-        $this->assertCount(\count($errors), zip($errors, $response->getMessages())
+        $this->assertCount(
+            count($errors),
+            zip($errors, $response->getMessages())
             ->unpack(function (array $expected, HasErrorCode $message) {
                 $this->assertSame($expected[0], $message->getErrorCode());
                 $this->assertSame($expected[1], $message->getMessage());
@@ -119,7 +124,6 @@ class ErrorResponsesTest extends TestCase
         return $this->getSerializer()->deserialize($json, ErrorResponse::class);
     }
 
-    /** @return ErrorResponse */
     protected function loadFixture(string $filename): ErrorResponse
     {
         return $this->loadFixtureWithType($filename, ErrorResponse::class);

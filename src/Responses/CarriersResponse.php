@@ -30,12 +30,13 @@ namespace ShipAndCoSDK\Responses;
 use CommonSDK\Concerns\ListContainer;
 use CommonSDK\Contracts\ItemList;
 use CommonSDK\Contracts\Response;
+use IteratorAggregate;
 use ShipAndCoSDK\Responses\Types\Carrier;
 
 /**
  * @template-implements \IteratorAggregate<Carrier>
  */
-final class CarriersResponse implements Response, ItemList, \IteratorAggregate
+final class CarriersResponse implements Response, ItemList, IteratorAggregate
 {
     use ListContainer;
 

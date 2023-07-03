@@ -47,14 +47,14 @@ abstract class DatedWrapper
     /**
      * @JMS\Type("DateTimeImmutable<'Y-m-d\TH:i:s.uO'>")
      *
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     protected $created_at;
 
     /**
      * @JMS\Type("DateTimeImmutable<'Y-m-d\TH:i:s.uO'>")
      *
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     protected $updated_at;
 }
