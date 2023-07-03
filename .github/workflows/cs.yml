@@ -16,7 +16,7 @@ jobs:
       matrix:
         php-version: ['8.1']
 
-    name: PHP-CS-Fixer with ${{ matrix.php-version }}
+    name: PHP-CS-Fixer with PHP ${{ matrix.php-version }}
 
     steps:
       - uses: actions/checkout@v2
