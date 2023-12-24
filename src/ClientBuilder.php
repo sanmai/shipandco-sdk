@@ -220,7 +220,7 @@ final class ClientBuilder implements LoggerAwareInterface
 
         assert(is_string($this->userAgentPostfix));
 
-        return default_user_agent().' '.$this->userAgentPostfix;
+        return default_user_agent() . ' ' . $this->userAgentPostfix;
     }
 
     /**
@@ -232,8 +232,8 @@ final class ClientBuilder implements LoggerAwareInterface
     {
         foreach ([
             new PlaceholderVersionReader(self::VERSION_INFO),
-            new GitVersionReader(__DIR__.'/../.git'),
-            new ComposerBranchAliasVersionReader(__DIR__.'/../composer.json'),
+            new GitVersionReader(__DIR__ . '/../.git'),
+            new ComposerBranchAliasVersionReader(__DIR__ . '/../composer.json'),
         ] as $versionReader) {
             $version = $versionReader->getVersionString();
 

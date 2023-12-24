@@ -49,7 +49,7 @@ class LaravelServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register()
     {
         $this->app->singleton(Client::class, function (Application $app) {
-            $config = $app['config']['services.'.self::SERVICE_NAME];
+            $config = $app['config']['services.' . self::SERVICE_NAME];
 
             $builder = new ClientBuilder();
             $builder->setToken($config['token']);
