@@ -28,7 +28,7 @@ jobs:
           - { php-version: '7.4', make-args: 'PHPUNIT_GROUP=integration' }
 
     continue-on-error: ${{ matrix.php-version == '8.3' }}
-    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
+    name: CI PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
       - name: Checkout code
