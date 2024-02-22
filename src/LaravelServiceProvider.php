@@ -31,6 +31,8 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
+use function array_key_exists;
+
 /**
  * @final
  */
@@ -47,16 +49,16 @@ class LaravelServiceProvider extends ServiceProvider implements DeferrableProvid
     public function register()
     {
         $this->app->singleton(Client::class, function (Application $app) {
-            $config = $app['config']['services.'.self::SERVICE_NAME];
+            $config = $app['config']['services.' . self::SERVICE_NAME];
 
             $builder = new ClientBuilder();
             $builder->setToken($config['token']);
 
-            if (\array_key_exists('timeout', $config)) {
+            if (array_key_exists('timeout', $config)) {
                 $builder->setTimeout($config['timeout']);
             }
 
-            if (\array_key_exists('cache', $config)) {
+            if (array_key_exists('cache', $config)) {
                 $builder->setCacheDir($config['cache']);
             }
 

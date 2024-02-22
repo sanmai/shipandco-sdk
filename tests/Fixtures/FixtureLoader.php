@@ -27,20 +27,23 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Fixtures;
 
+use function file_get_contents;
+use function file_put_contents;
+
 class FixtureLoader
 {
     public static function loadResponse(string $filename): string
     {
-        return file_get_contents(__DIR__.'/responses/'.$filename);
+        return file_get_contents(__DIR__ . '/responses/' . $filename);
     }
 
     public static function loadRequest(string $filename): string
     {
-        return file_get_contents(__DIR__.'/requests/'.$filename);
+        return file_get_contents(__DIR__ . '/requests/' . $filename);
     }
 
     public static function saveRequest(string $filename, string $json): bool
     {
-        return false !== file_put_contents(__DIR__.'/requests/'.$filename, $json);
+        return false !== file_put_contents(__DIR__ . '/requests/' . $filename, $json);
     }
 }

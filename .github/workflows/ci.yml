@@ -15,19 +15,24 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.4', '8.0', '8.1']
+        php-version: 
+          - '7.4'
+          - '8.0'
+          - '8.1'
+          - '8.2'
+          - '8.3'
         dependencies: ['']
         make-args: ['']
         include:
           - { php-version: '7.4', dependencies: '--prefer-lowest' }
           - { php-version: '7.4', make-args: 'PHPUNIT_GROUP=integration' }
 
-    continue-on-error: ${{ matrix.php-version == '8.1' }}
-    name: PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
+    continue-on-error: ${{ matrix.php-version == '8.3' }}
+    name: CI PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -37,7 +42,7 @@ jobs:
           tools: composer:v2
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/composer
           key: composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.*') }}

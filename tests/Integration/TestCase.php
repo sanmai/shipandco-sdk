@@ -31,6 +31,12 @@ use Doctrine\Common\Cache\FilesystemCache;
 use ShipAndCoSDK\Client;
 use ShipAndCoSDK\ClientBuilder;
 
+use function is_dir;
+use function class_exists;
+use function in_array;
+use function sprintf;
+use function getenv;
+
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     public const SHIPANDCO_ACCESS_TOKEN = 'SHIPANDCO_ACCESS_TOKEN';
@@ -49,7 +55,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             $builder->setCacheDir('build/cache/', true);
         }
 
-        if (\in_array('--debug', $_SERVER['argv'])) {
+        if (in_array('--debug', $_SERVER['argv'])) {
             $builder->setLogger(new DebuggingLogger());
         }
 

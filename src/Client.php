@@ -52,7 +52,5 @@ final class Client extends CommonClient
         HttpResponse::HTTP_INTERNAL_SERVER_ERROR      => ErrorResponse::class, // 500	Internal errors
     ];
 
-    protected function postDeserialize(ResponseInterface $httpResponse, Response $response): void
-    {
-    }
+    protected function postDeserialize(ResponseInterface $httpResponse, Response $response): void {}
 }

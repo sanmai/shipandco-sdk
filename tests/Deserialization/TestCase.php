@@ -32,6 +32,8 @@ use CommonSDK\Contracts\Response;
 use JSONSerializer\Serializer;
 use Tests\ShipAndCoSDK\Fixtures\FixtureLoader;
 
+use function is_string;
+
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     private $serializer;
@@ -59,7 +61,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function assertListResponse($response, int $count, string $itemType, ?callable $itemCallback = null)
     {
-        if (\is_string($response)) {
+        if (is_string($response)) {
             $response = $this->loadFixture($response);
         }
 

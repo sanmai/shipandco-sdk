@@ -40,7 +40,7 @@ $request = new \ShipAndCoSDK\Requests\CarriersRequest();
 
 $response = $client->sendCarriersRequest($request);
 
-var_dump(\count($response));
+var_dump(count($response));
 
 foreach ($response as $value) {
     echo "{$value->id}\t{$value->type}\t{$value->state}\t{$value->created_at->format('Y-m-d')}\n";

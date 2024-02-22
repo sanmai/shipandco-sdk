@@ -32,6 +32,8 @@ use JMS\Serializer\Annotation as JMS;
 use ShipAndCoSDK\Common\DatedWrapper as CommonDatedWrapper;
 use ShipAndCoSDK\Responses\Types\Address;
 
+use function property_exists;
+
 /**
  * @property-read string|null $address1
  * @property-read string|null $address1_kanji

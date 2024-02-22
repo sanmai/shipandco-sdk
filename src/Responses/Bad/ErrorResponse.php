@@ -33,6 +33,7 @@ use CommonSDK\Contracts\Response;
 use CommonSDK\Types\Message;
 use Countable;
 use JMS\Serializer\Annotation as JMS;
+use ReturnTypeWillChange;
 use ShipAndCoSDK\Responses\Bad\ErrorResponse\Detail;
 
 /**
@@ -126,6 +127,7 @@ final class ErrorResponse implements Response, HasErrorCode, Countable
         return (string) ($this->message ?? $this->description ?? $this->debug_id);
     }
 
+    #[ReturnTypeWillChange]
     public function count()
     {
         return 0;

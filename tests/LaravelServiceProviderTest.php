@@ -27,12 +27,16 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK;
 
+use Closure;
 use CommonSDK\Types\Client as CommonClient;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Contracts\Foundation\Application as ApplicationInterface;
 use PHPUnit\Framework\TestCase;
+use ReturnTypeWillChange;
 use ShipAndCoSDK\Client;
 use ShipAndCoSDK\LaravelServiceProvider;
+
+use function sys_get_temp_dir;
 
 /**
  * @covers \ShipAndCoSDK\LaravelServiceProvider
@@ -64,7 +68,7 @@ class LaravelServiceProviderTest extends TestCase
 
     private function applicationWithConfig(array $config): \Illuminate\Foundation\Application
     {
-        $app = new class() extends \Illuminate\Foundation\Application {
+        $app = new class () extends \Illuminate\Foundation\Application {
             private $config;
 
             public function __construct($basePath = null)
@@ -80,6 +84,7 @@ class LaravelServiceProviderTest extends TestCase
                 $this->config = $config;
             }
 
+            #[ReturnTypeWillChange]
             public function offsetGet($key)
             {
                 TestCase::assertSame('config', $key);
@@ -95,7 +100,7 @@ class LaravelServiceProviderTest extends TestCase
 
     private function runOnClient(Client $client, callable $callback)
     {
-        return \Closure::bind($callback, $client, CommonClient::class)();
+        return Closure::bind($callback, $client, CommonClient::class)();
     }
 
     public function test_register()

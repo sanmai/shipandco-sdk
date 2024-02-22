@@ -29,8 +29,9 @@ namespace ShipAndCoSDK;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
-use function GuzzleHttp\default_user_agent;
+
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
+
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -40,6 +41,12 @@ use Psr\Log\LoggerAwareTrait;
 use VersionInfo\ComposerBranchAliasVersionReader;
 use VersionInfo\GitVersionReader;
 use VersionInfo\PlaceholderVersionReader;
+
+use function GuzzleHttp\default_user_agent;
+use function array_merge;
+use function sprintf;
+use function assert;
+use function is_string;
 
 /**
  * @codeCoverageIgnore
@@ -201,6 +208,7 @@ final class ClientBuilder implements LoggerAwareInterface
      * @codeCoverageIgnore
      *
      * @phan-suppress PhanDeprecatedFunction
+     *
      * @psalm-suppress RedundantConditionGivenDocblockType
      * @psalm-suppress DeprecatedFunction
      */
@@ -210,21 +218,22 @@ final class ClientBuilder implements LoggerAwareInterface
             $this->setUserAgent(self::PACKAGE_NAME, self::getVersion() ?? 'dev-unknown');
         }
 
-        \assert(\is_string($this->userAgentPostfix));
+        assert(is_string($this->userAgentPostfix));
 
-        return default_user_agent().' '.$this->userAgentPostfix;
+        return default_user_agent() . ' ' . $this->userAgentPostfix;
     }
 
     /**
      * @codeCoverageIgnore
+     *
      * @psalm-suppress MixedArrayAccess
      */
     private static function getVersion(): ?string
     {
         foreach ([
             new PlaceholderVersionReader(self::VERSION_INFO),
-            new GitVersionReader(__DIR__.'/../.git'),
-            new ComposerBranchAliasVersionReader(__DIR__.'/../composer.json'),
+            new GitVersionReader(__DIR__ . '/../.git'),
+            new ComposerBranchAliasVersionReader(__DIR__ . '/../composer.json'),
         ] as $versionReader) {
             $version = $versionReader->getVersionString();
 
