@@ -27,6 +27,4 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK\Common;
 
-abstract class TestCase extends \PHPUnit\Framework\TestCase
-{
-}
+abstract class TestCase extends \PHPUnit\Framework\TestCase {}

@@ -78,7 +78,7 @@ final class DebuggingLogger implements LoggerInterface
 
         if (!$fh) {
             $reflection = new ReflectionClass(\Composer\Autoload\ClassLoader::class);
-            $fh = fopen(dirname((string) $reflection->getFileName(), 3).DIRECTORY_SEPARATOR.self::LOG_FILE, 'a');
+            $fh = fopen(dirname((string) $reflection->getFileName(), 3) . DIRECTORY_SEPARATOR . self::LOG_FILE, 'a');
         }
 
         assert(is_resource($fh));
@@ -92,7 +92,7 @@ final class DebuggingLogger implements LoggerInterface
     private static function context2replacements($context): Generator
     {
         foreach ($context as $key => $value) {
-            yield '{'.$key.'}' => $value;
+            yield '{' . $key . '}' => $value;
         }
     }
 }
