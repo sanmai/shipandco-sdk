@@ -38,6 +38,7 @@ use ShipAndCoSDK\Requests\Types\Setup\CashOnDelivery;
 
 /**
  * @property-write string $carrier
+ * @property-write string $carrier_id
  * @property-write string $service
  * @property-write string $currency
  * @property-write DateTimeInterface $shipment_date
