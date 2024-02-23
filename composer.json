@@ -24,10 +24,9 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
         "jms/serializer": "^3.9",
-        "psr/log": "^1.1",
         "sanmai/json-serializer": "^0.1.1 || ^0.2.4",
         "sanmai/pipeline": "^5 || ^6",
-        "sanmai/sdk-common": "^0.5.2",
+        "sanmai/sdk-common": "^0.5.4",
         "sanmai/version-info": "^0.2.0",
         "symfony/http-foundation": "^4.4.7 || ^5.0.7"
     },
@@ -41,6 +40,7 @@
         "php-coveralls/php-coveralls": "^2.4.1",
         "phpstan/phpstan": ">=0.10",
         "phpunit/phpunit": "^9.3",
+        "psr/log": "^1.1",
         "vimeo/psalm": ">=3.0.16"
     },
     "conflict": {
