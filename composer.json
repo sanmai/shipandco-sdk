@@ -23,6 +23,7 @@
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.3 || ^7.0",
+        "doctrine/annotations": "^1.14",
         "jms/serializer": "^3.9",
         "sanmai/json-serializer": "^0.1.1 || ^0.2.4",
         "sanmai/pipeline": "^5 || ^6",
