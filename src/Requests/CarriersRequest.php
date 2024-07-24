@@ -39,6 +39,6 @@ final class CarriersRequest implements Request
     use RequestCore;
 
     private const METHOD = 'GET';
-    private const ADDRESS = '/api/v1/carriers';
+    private const ADDRESS = '/v1/carriers';
     private const RESPONSE = CarriersResponse::class;
 }

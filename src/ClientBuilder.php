@@ -57,7 +57,7 @@ final class ClientBuilder implements LoggerAwareInterface
 
     private const DEFAULT_TIMEOUT = 60;
 
-    private const STANDARD_BASE_URL = 'https://app.shipandco.com';
+    private const STANDARD_BASE_URL = 'https://api.shipandco.com';
 
     private const PACKAGE_NAME = 'ShipAndCo-SDK';
     private const VERSION_INFO = '$Format:%h%d by %an +%ae$';
