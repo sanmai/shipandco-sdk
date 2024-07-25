@@ -9,7 +9,7 @@ $config
     ->setRiskyAllowed(true)
     ->setRules([
         'header_comment' => ['header' => $header, 'separate' => 'bottom', 'location' => 'after_open', 'comment_type' => 'PHPDoc'],
-        '@PER' => true,
+        '@PER-CS' => true,
         'array_indentation' => true,
         'native_function_invocation' => [
             'include' => ['@internal'],
@@ -21,6 +21,7 @@ $config
             'import_functions' => true,
         ],
         'declare_equal_normalize' => ['space' => 'none'],
+        'trailing_comma_in_multiline' => false,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
