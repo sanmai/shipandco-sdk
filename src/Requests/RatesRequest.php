@@ -43,6 +43,6 @@ final class RatesRequest implements JsonRequest
     use ShipmentFields;
 
     private const METHOD = 'POST';
-    private const ADDRESS = '/api/v1/rates';
+    private const ADDRESS = '/v1/rates';
     private const RESPONSE = RatesResponse::class;
 }

@@ -39,6 +39,6 @@ final class WarehousesRequest implements Request
     use RequestCore;
 
     private const METHOD = 'GET';
-    private const ADDRESS = '/api/v1/addresses';
+    private const ADDRESS = '/v1/addresses';
     private const RESPONSE = AddressesResponse::class;
 }

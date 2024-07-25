@@ -88,6 +88,6 @@ final class Detail implements HasErrorCode
 
     public function getMessage(): string
     {
-        return $this->message;
+        return $this->message ?? '';
     }
 }
