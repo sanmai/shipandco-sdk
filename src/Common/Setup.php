@@ -121,6 +121,13 @@ abstract class Setup
      *
      * @var string
      */
+    protected $cool_options;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
     protected $pack_size;
 
     /**
@@ -143,6 +150,27 @@ abstract class Setup
      * @var int
      */
     protected $print_start_location;
+
+    /**
+     * @JMS\Type("float")
+     *
+     * @var float
+     */
+    protected $shipping_fee;
+
+    /**
+     * @JMS\Type("bool")
+     *
+     * @var bool
+     */
+    protected $security_service;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $consignee_tax_id;
 
     /**
      * @JMS\Type("bool")

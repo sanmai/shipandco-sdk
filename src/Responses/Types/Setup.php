@@ -37,8 +37,10 @@ use ShipAndCoSDK\Responses\Types\Setup\CashOnDelivery;
 
 /**
  * @property-read string $carrier
+ * @property-read string $carrier_id
  * @property-read string $service
  * @property-read string $currency
+ * @property-read DateTimeInterface $shipment_date
  * @property-read DateTimeInterface $date
  * @property-read string $time
  * @property-read float|int $insurance
@@ -46,10 +48,16 @@ use ShipAndCoSDK\Responses\Types\Setup\CashOnDelivery;
  * @property-read string $delivery_note
  * @property-read float|int $discount
  * @property-read bool $signature
+ * @property-read string $cool_options
  * @property-read Care $care
  * @property-read string $pack_size
  * @property-read int $pack_amount
  * @property-read CashOnDelivery $cash_on_delivery
+ * @property-read bool $return_label
+ * @property-read int $print_start_location
+ * @property-read float $shipping_fee
+ * @property-read bool $security_service
+ * @property-read string $consignee_tax_id
  * @property-read bool $test
  */
 final class Setup extends CommonSetup

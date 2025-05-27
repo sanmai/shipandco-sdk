@@ -49,12 +49,16 @@ use ShipAndCoSDK\Requests\Types\Setup\CashOnDelivery;
  * @property-write string $delivery_note
  * @property-write float|int $discount
  * @property-write bool $signature
+ * @property-write string $cool_options
  * @property-read Care $care
  * @property-write string $pack_size
  * @property-write int $pack_amount
  * @property-read CashOnDelivery $cash_on_delivery
  * @property-write bool $return_label
  * @property-write int $print_start_location
+ * @property-write float $shipping_fee
+ * @property-write bool $security_service
+ * @property-write string $consignee_tax_id
  * @property-write bool $test
  */
 final class Setup extends CommonSetup implements ReadableRequestProperty
