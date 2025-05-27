@@ -126,7 +126,7 @@ abstract class Setup
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var int
      */
     protected $pack_size;
 

@@ -51,7 +51,7 @@ use ShipAndCoSDK\Requests\Types\Setup\CashOnDelivery;
  * @property-write bool $signature
  * @property-write string $cool_options
  * @property-read Care $care
- * @property-write string $pack_size
+ * @property-write int $pack_size
  * @property-write int $pack_amount
  * @property-read CashOnDelivery $cash_on_delivery
  * @property-write bool $return_label

@@ -50,7 +50,7 @@ use ShipAndCoSDK\Responses\Types\Setup\CashOnDelivery;
  * @property-read bool $signature
  * @property-read string $cool_options
  * @property-read Care $care
- * @property-read string $pack_size
+ * @property-read int $pack_size
  * @property-read int $pack_amount
  * @property-read CashOnDelivery $cash_on_delivery
  * @property-read bool $return_label
