@@ -27,7 +27,7 @@ jobs:
         make-args: ['']
         include:
           - { php-version: '7.4', dependencies: '--prefer-lowest' }
-        #  - { php-version: '7.4', make-args: 'PHPUNIT_GROUP=integration' }
+          - { php-version: '7.4', make-args: 'PHPUNIT_GROUP=integration' }
 
     continue-on-error: ${{ matrix.php-version == '8.3' }}
     name: CI PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
