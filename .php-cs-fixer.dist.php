@@ -6,6 +6,7 @@ use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 
 $config = new PhpCsFixer\Config();
 $config
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
         'header_comment' => ['header' => $header, 'separate' => 'bottom', 'location' => 'after_open', 'comment_type' => 'PHPDoc'],

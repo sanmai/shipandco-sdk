@@ -1,4 +1,2 @@
 parameters:
 	ignoreErrors:
-		- '#Property .*Request::.* is not writable.#'
-		- '#Property class@anonymous.* is not writable.#'
