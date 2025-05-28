@@ -42,7 +42,7 @@
         "phpstan/phpstan": ">=0.10",
         "phpunit/phpunit": "^9.3",
         "psr/log": "^1.1",
-        "vimeo/psalm": ">=3.0.16"
+        "vimeo/psalm": ">=3.0.16 <6"
     },
     "conflict": {
         "doctrine/annotations": "<1.10.3"
