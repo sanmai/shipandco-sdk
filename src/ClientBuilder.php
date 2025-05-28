@@ -29,9 +29,7 @@ namespace ShipAndCoSDK;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
-
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
-
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -115,7 +113,7 @@ final class ClientBuilder implements LoggerAwareInterface
     /**
      * @see https://jmsyst.com/libs/serializer/master/configuration#configuring-a-cache-directory
      */
-    public function setCacheDir(string $cacheDirectory = null, bool $debug = false): self
+    public function setCacheDir(?string $cacheDirectory = null, bool $debug = false): self
     {
         $this->cacheDirectory = $cacheDirectory;
         $this->cacheDebug = $debug;

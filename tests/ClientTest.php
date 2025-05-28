@@ -39,7 +39,7 @@ use Tests\ShipAndCoSDK\Fixtures\FixtureLoader;
 class ClientTest extends ClientTestCase
 {
     /** @return Client */
-    public function newClient(ClientInterface $http = null)
+    public function newClient(?ClientInterface $http = null)
     {
         $builder = new ClientBuilder();
         $builder->setGuzzleClient($http ?? $this->getHttpClient());
