@@ -84,8 +84,7 @@ class LaravelServiceProviderTest extends TestCase
                 $this->config = $config;
             }
 
-            #[ReturnTypeWillChange]
-            public function offsetGet($key)
+            public function offsetGet($key): mixed
             {
                 TestCase::assertSame('config', $key);
 
