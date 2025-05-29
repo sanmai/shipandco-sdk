@@ -68,7 +68,7 @@ class LaravelServiceProviderTest extends TestCase
 
     private function applicationWithConfig(array $config): \Illuminate\Foundation\Application
     {
-        $app = new class () extends \Illuminate\Foundation\Application {
+        $app = new class extends \Illuminate\Foundation\Application {
             private $config;
 
             public function __construct($basePath = null)

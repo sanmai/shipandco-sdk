@@ -29,7 +29,6 @@ namespace Tests\ShipAndCoSDK\Deserialization;
 
 use CommonSDK\Contracts\HasErrorCode;
 use CommonSDK\Contracts\Response;
-
 use ShipAndCoSDK\Responses\Bad\ErrorResponse;
 
 use function Pipeline\zip;

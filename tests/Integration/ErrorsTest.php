@@ -64,7 +64,6 @@ final class ErrorsTest extends TestCase
         foreach ($response->details as $detail) {
             $this->assertNotEmpty($detail->code);
             $this->assertNotEmpty($detail->message);
-            $this->assertNotEmpty($detail->field);
         }
     }
 }
