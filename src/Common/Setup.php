@@ -124,7 +124,7 @@ abstract class Setup
     protected $cool_options;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("int")
      *
      * @var int
      */
