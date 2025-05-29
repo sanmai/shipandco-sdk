@@ -22,27 +22,27 @@
     "require": {
         "php": "^8.2",
         "ext-json": "*",
-        "doctrine/annotations": "^1.14 || ^2.0",
-        "guzzlehttp/guzzle": "^6.3 || ^7.0",
-        "jms/serializer": "^3.9",
+        "doctrine/annotations": "^1.14.4 || ^2.0",
+        "guzzlehttp/guzzle": "^6.3 || ^7.9.3",
+        "jms/serializer": "^3.24",
         "sanmai/json-serializer": "^0.1.1 || ^0.2.4",
-        "sanmai/pipeline": "^5 || ^6",
-        "sanmai/sdk-common": "^0.5.4",
-        "sanmai/version-info": "^0.2.0",
-        "symfony/http-foundation": "^4.4.7 || ^5.0.7"
+        "sanmai/pipeline": "^6.14",
+        "sanmai/sdk-common": "^0.5.5",
+        "sanmai/version-info": "^0.2.2",
+        "symfony/http-foundation": "^5.4.49 || ^6.4.21 || ^7.2.6"
     },
     "require-dev": {
         "doctrine/cache": "<2",
         "ergebnis/composer-normalize": ">=2.23",
-        "friendsofphp/php-cs-fixer": "^3",
-        "infection/infection": ">=0.16",
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "infection/infection": "^0.29.14",
         "laravel/framework": "^6.20.26 || ^8.40 || ^10 || ^12",
-        "phan/phan": "^1 <1.3 || >1.3.0",
-        "php-coveralls/php-coveralls": ">=2.4.1",
-        "phpstan/phpstan": ">=0.10",
+        "phan/phan": "^5.4.5",
+        "php-coveralls/php-coveralls": ">=2.8.0",
+        "phpstan/phpstan": "^2.1.17",
         "phpunit/phpunit": "^9.3",
-        "psr/log": "^1.1",
-        "vimeo/psalm": ">=3.0.16 <7"
+        "psr/log": "^2 || ^3.0.2",
+        "vimeo/psalm": "^6.7.0"
     },
     "conflict": {
         "doctrine/annotations": "<1.10.3"
