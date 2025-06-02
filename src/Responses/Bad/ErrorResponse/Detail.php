@@ -71,7 +71,7 @@ final class Detail implements HasErrorCode
     private $issue;
 
     /**
-     * This might be an int, or an array. Currently we deserialize ints only. This requires a custom handler, an implemenation of SubscribingHandlerInterface.
+     * This might be an int, or an array. Currently we deserialize ints only. This requires a custom handler, an implementation of SubscribingHandlerInterface.
      *
      * @see https://github.com/docteurklein/event-store/blob/master/src/Knp/Event/Serializer/Jms/Handler/Event/Generic.php
      *

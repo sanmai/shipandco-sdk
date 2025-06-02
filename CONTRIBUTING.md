@@ -23,4 +23,4 @@ Then it is recommended to run tests in a debugging mode:
 vendor/bin/phpunit --group=integration --debug
 ```
 
-This command will show requestes and responses as they happen.
+This command will show requests and responses as they happen.
