@@ -30,9 +30,8 @@ namespace Tests\ShipAndCoSDK;
 use Closure;
 use CommonSDK\Types\Client as CommonClient;
 use GuzzleHttp\ClientInterface;
-use Illuminate\Contracts\Foundation\Application as ApplicationInterface;
+use Illuminate\Foundation\Application as ApplicationInterface;
 use PHPUnit\Framework\TestCase;
-use ReturnTypeWillChange;
 use ShipAndCoSDK\Client;
 use ShipAndCoSDK\LaravelServiceProvider;
 
@@ -66,35 +65,11 @@ class LaravelServiceProviderTest extends TestCase
         $this->provider = new LaravelServiceProvider($this->app);
     }
 
-    private function applicationWithConfig(array $config): \Illuminate\Foundation\Application
+    private function applicationWithConfig(array $config): ApplicationInterface
     {
-        $app = new class extends \Illuminate\Foundation\Application {
-            private $config;
+        $this->app->method('offsetGet')->with('config')->willReturn($config);
 
-            public function __construct($basePath = null)
-            {
-                if (false) {
-                    // PHPStan workaround
-                    parent::__construct($basePath);
-                }
-            }
-
-            public function setConfig($config)
-            {
-                $this->config = $config;
-            }
-
-            public function offsetGet($key): mixed
-            {
-                TestCase::assertSame('config', $key);
-
-                return $this->config;
-            }
-        };
-
-        $app->setConfig($config);
-
-        return $app;
+        return $this->app;
     }
 
     private function runOnClient(Client $client, callable $callback)

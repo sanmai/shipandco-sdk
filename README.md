@@ -51,7 +51,7 @@ Major parts are:
 
 - Client. Client is the object you send all requests through.
 - Requests. There are several request objects for most requests the API offers. They follow a fluent interface paradigm, where if the original request has a certain property, a request here will have it too. More on this below.
-- Responses. After sending a request you'll have a response object, which could be an actual reponse, or an error response. All responses follow the same fluent paradigm.
+- Responses. After sending a request you'll have a response object, which could be an actual response, or an error response. All responses follow the same fluent paradigm.
 
 ## Usage
 
@@ -114,7 +114,7 @@ php examples/030_CarriersRequest.php
 
 Examples come with a debugging output enabled so that you can experiment freely.
 
-Obviosly, to run examples you'll need to have the library checked out:
+Obviously, to run examples you'll need to have the library checked out:
 
 ```bash
 git clone https://github.com/sanmai/shipandco-sdk.git
@@ -240,7 +240,7 @@ As far as shipments go, it's important to understand that requests for domestic 
 - For domestic shipments addresses (to and from) should be in Japanese. The opposite is true for International shipments.
 - No city field is needed for domestic shipments (city goes to `address_1`).
 - No need for most details about product: on the contrary, for International shipments, details about products are used for customs clearance purpose.
-- For domestic shipments, if it's not a cash on delivery shipment, product name only should work (just to show on the label wha'ts inside the box).
+- For domestic shipments, if it's not a cash on delivery shipment, product name only should work (just to show on the label whats inside the box).
 
 This SDK poses no restrictions on the number of fields specified in a request (other than that they should exist), thus it is a user responsibility (yours) to set correct fields for each type of request.
 
