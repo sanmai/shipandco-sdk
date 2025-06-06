@@ -89,9 +89,11 @@ class ShipmentResponseTest extends TestCase
                 'ref_number'           => '',
                 'delivery_note'        => '',
                 'discount'             => 0.0,
-                'pack_size'            => '0',
+                'cool_options'         => 'regular',
+                'pack_size'            => 0,
                 'pack_amount'          => 3,
                 'print_start_location' => 1,
+                'shipping_fee'         => 0.0,
                 'test'                 => true,
                 'care'                 => [
                     'fragile'        => false,
@@ -259,7 +261,7 @@ class ShipmentResponseTest extends TestCase
                 'ref_number'    => '',
                 'delivery_note' => '',
                 'discount'      => 0.0,
-                'pack_size'     => '0',
+                'pack_size'     => 0,
                 'pack_amount'   => 3,
                 'test'          => true,
                 'care'          => [
