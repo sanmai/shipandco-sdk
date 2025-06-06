@@ -55,7 +55,7 @@
         "ref_number": "",
         "delivery_note": "",
         "signature": false,
-        "pack_size": "0",
+        "pack_size": 0,
         "pack_amount": 3,
         "return_label": false,
         "print_start_location": 1,
