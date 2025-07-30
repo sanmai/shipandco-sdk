@@ -43,7 +43,7 @@ This library is far from offering a complete set of API methods, but it should d
 composer require sanmai/shipandco-sdk
 ```
 
-This SDK requires at least PHP 7.3. It was tested to work under PHP 7.3, 7.4, and 8.0.
+This SDK requires at least PHP 8.2.
 
 ## Overview
 
