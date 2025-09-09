@@ -78,6 +78,13 @@ final class Delivery
     private $invoice;
 
     /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $carrier_invoice;
+
+    /**
      * @JMS\Type("array")
      *
      * @var array
