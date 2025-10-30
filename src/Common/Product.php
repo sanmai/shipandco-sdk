@@ -53,6 +53,13 @@ abstract class Product
     protected $price;
 
     /**
+     * @JMS\Type("int")
+     *
+     * @var int
+     */
+    protected $weight;
+
+    /**
      * @JMS\Type("string")
      *
      * @var string
