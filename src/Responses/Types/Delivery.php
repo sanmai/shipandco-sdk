@@ -36,6 +36,7 @@ use JMS\Serializer\Annotation as JMS;
  * @property-read string[] $tracking_numbers
  * @property-read string $label
  * @property-read string|null $invoice
+ * @property-read string $carrier_invoice
  * @property-read string[] $warnings
  */
 final class Delivery
