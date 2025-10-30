@@ -35,6 +35,7 @@ use ShipAndCoSDK\Common\Product as CommonProduct;
  * @property-write string $name
  * @property-write int $quantity
  * @property-write int $price
+ * @property-write int $weight
  * @property-write string $hs_code
  * @property-write string $origin_country
  */
