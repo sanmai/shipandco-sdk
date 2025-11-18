@@ -39,7 +39,7 @@ use ShipAndCoSDK\Responses\Types\Carrier\Settings;
  * @property-read Credentials $credentials
  * @property-read Settings $settings
  */
-final class Carrier extends DatedWrapper
+class Carrier extends DatedWrapper
 {
     use PropertyRead;
 

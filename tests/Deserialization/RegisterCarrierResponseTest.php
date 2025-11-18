@@ -47,10 +47,10 @@ class RegisterCarrierResponseTest extends TestCase
     {
         yield ['register_carrier_dhl.json', [
             'id'         => 'carrier_123abc',
-            'type'       => 'dhl',
-            'state'      => 'active',
             'created_at' => '2025-03-10T06:49:21.730000+0000',
             'updated_at' => '2025-03-10T06:49:21.730000+0000',
+            'type'       => 'dhl',
+            'state'      => 'active',
             'credentials' => [
                 'account_number' => '****6789',
                 'site_id'        => '****123',
