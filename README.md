@@ -13,7 +13,7 @@ Features:
 - [x] Rate
   - [x] [List Rates](#list-rates)
 - [ ] Carrier
-  - [ ] Register Carrier
+  - [x] [Register Carrier](#register-carrier)
   - [x] [List Carriers](#list-carriers)
   - [ ] Update Carrier
   - [ ] Delete Carrier
@@ -133,12 +133,49 @@ $response = $client->sendCarriersRequest($request);
 
 foreach ($response as $value) {
     echo "{$value->id}\t{$value->type}\t{$value->state}\t{$value->created_at->format('Y-m-d')}\n";
-    
+
     foreach ($value->credentials as $key => $value) {
         echo "\t$key =\t$value\n";
     }
 }
 ```
+
+#### Register Carrier
+
+```php
+$request = new \ShipAndCoSDK\Requests\RegisterCarrierRequest();
+
+// Example: Register DHL carrier
+$request->type = 'dhl';
+$request->credentials->account_number = '123456789';
+$request->credentials->site_id = 'YOUR_DHL_SITE_ID';
+$request->credentials->password = 'YOUR_DHL_PASSWORD';
+$request->credentials->address->company = 'Your Company Name';
+$request->credentials->address->phone = '08012345678';
+$request->credentials->address->email = 'your@email.com';
+$request->credentials->address->address1 = 'Your Address';
+$request->credentials->address->zip = '1234567';
+$request->credentials->address->city = 'Your City';
+$request->credentials->address->country = 'JP';
+
+$request->settings->print->size = 'PDF_A4';
+
+$response = $client->sendRegisterCarrierRequest($request);
+
+if ($response->hasErrors()) {
+    foreach ($response->getMessages() as $message) {
+        if ($message->getErrorCode() !== '') {
+            echo "{$message->getErrorCode()}: {$message->getMessage()}\n";
+        }
+    }
+    return;
+}
+
+echo "Carrier registered: {$response->id}\n";
+echo "Type: {$response->type}, State: {$response->state}\n";
+```
+
+Different carriers require different credentials. For FedEx, you'll need to set `invoice_2fa` and provide all address fields. See the [runnable example](examples/035_RegisterCarrierRequest.php) for more details.
 
 #### List Addresses
 

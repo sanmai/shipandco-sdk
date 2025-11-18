@@ -1,0 +1,30 @@
+{
+    "type": "fedex",
+    "credentials": {
+        "account_number": "987654321",
+        "password": "fedex_secret",
+        "invoice_2fa": {
+            "number": "INV-2025-12345",
+            "date": "2025-03-01",
+            "amount": 1234.56,
+            "currency": "USD"
+        },
+        "address": {
+            "company": "FedEx Test Company",
+            "phone": "+12025551234",
+            "email": "john@example.com",
+            "address1": "123 Main Street",
+            "address2": "Suite 100",
+            "full_name": "John Doe",
+            "zip": "20001",
+            "city": "Washington",
+            "country": "US"
+        }
+    },
+    "settings": {
+        "print": {
+            "size": "PDF_A4"
+        },
+        "label": {}
+    }
+}

@@ -25,49 +25,23 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Responses\Types\Carrier;
 
+use CommonSDK\Concerns\PropertyIterator;
 use CommonSDK\Concerns\PropertyRead;
-use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use IteratorAggregate;
+use ShipAndCoSDK\Common\Carrier\Invoice2fa as BaseInvoice2fa;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * Invoice details for FedEx 2FA verification.
+ *
+ * @property-read string $number   The invoice number from the latest FedEx invoice
+ * @property-read string $date     The invoice date in YYYY-MM-DD format
+ * @property-read float  $amount   The total amount on the invoice
+ * @property-read string $currency The currency code (e.g., JPY, USD)
  */
-class Carrier extends DatedWrapper
+final class Invoice2fa extends BaseInvoice2fa implements IteratorAggregate
 {
     use PropertyRead;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
-     */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    use PropertyIterator;
 }

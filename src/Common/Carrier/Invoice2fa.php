@@ -25,49 +25,49 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Common\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * Invoice details for FedEx 2FA verification.
+ * Required when registering a FedEx account via the API.
  */
-class Carrier extends DatedWrapper
+abstract class Invoice2fa
 {
-    use PropertyRead;
-
     /**
+     * The invoice number from the latest FedEx invoice.
+     *
      * @JMS\Type("string")
      *
      * @var string
      */
-    private $type;
+    protected $number;
 
     /**
+     * The invoice date in YYYY-MM-DD format.
+     *
      * @JMS\Type("string")
      *
      * @var string
      */
-    private $state;
+    protected $date;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
+     * The total amount on the invoice.
      *
-     * @var Credentials
+     * @JMS\Type("float")
+     *
+     * @var float
      */
-    private $credentials;
+    protected $amount;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
+     * The currency code for the invoice amount (e.g., JPY, USD).
      *
-     * @var Settings
+     * @JMS\Type("string")
+     *
+     * @var string
      */
-    private $settings;
+    protected $currency;
 }

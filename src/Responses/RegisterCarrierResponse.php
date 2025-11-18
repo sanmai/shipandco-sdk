@@ -25,49 +25,16 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Responses;
 
-use CommonSDK\Concerns\PropertyRead;
-use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use CommonSDK\Concerns\SuccessfulResponse;
+use CommonSDK\Contracts\Response;
+use ShipAndCoSDK\Responses\Types\Carrier;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * Response from registering a new carrier account.
  */
-class Carrier extends DatedWrapper
+final class RegisterCarrierResponse extends Carrier implements Response
 {
-    use PropertyRead;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
-     */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    use SuccessfulResponse;
 }

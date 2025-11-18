@@ -25,49 +25,95 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Common\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
-/**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
- */
-class Carrier extends DatedWrapper
+abstract class Credentials
 {
-    use PropertyRead;
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $account_number;
 
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
-    private $type;
+    protected $site_id;
 
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
-    private $state;
+    protected $password;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
+     * @JMS\Type("string")
      *
-     * @var Credentials
+     * @var string|null
      */
-    private $credentials;
+    protected $import_acc_number;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
+     * @JMS\Type("string")
      *
-     * @var Settings
+     * @var string|null
      */
-    private $settings;
+    protected $access_key;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $user_name;
+
+    /**
+     * @JMS\Type("array<string>")
+     *
+     * @var string[]|null
+     */
+    protected $customer_numbers;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $key;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $freight_number;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $user_id;
+
+    /**
+     * Invoice details for FedEx 2FA verification.
+     *
+     * @JMS\Type("ShipAndCoSDK\Common\Carrier\Invoice2fa")
+     *
+     * @var Invoice2fa|null
+     */
+    protected $invoice_2fa;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $niokurinin;
 }

@@ -40,6 +40,8 @@ use JMS\Serializer\Annotation as JMS;
  * @property-read string $account_number
  * @property-read string $account_key_number
  * @property-read string $customer_numbers
+ * @property-read string $site_id
+ * @property-read Invoice2fa $invoice_2fa
  */
 final class Credentials implements IteratorAggregate
 {
@@ -94,4 +96,20 @@ final class Credentials implements IteratorAggregate
      * @var string
      */
     private $customer_numbers;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $site_id;
+
+    /**
+     * Invoice details for FedEx 2FA verification.
+     *
+     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Invoice2fa")
+     *
+     * @var Invoice2fa
+     */
+    private $invoice_2fa;
 }
