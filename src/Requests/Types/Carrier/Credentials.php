@@ -25,49 +25,46 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Requests\Types\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
+use CommonSDK\Concerns\ObjectPropertyRead;
+use CommonSDK\Concerns\PropertyWrite;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use ShipAndCoSDK\Common\Carrier\Credentials as CommonCredentials;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * @property-write string|null $account_number
+ * @property-write string|null $site_id
+ * @property-write string|null $password
+ * @property-write string|null $import_acc_number
+ * @property-write string|null $access_key
+ * @property-write string|null $user_name
+ * @property-write string[]|null $customer_numbers
+ * @property-write string|null $key
+ * @property-write string|null $freight_number
+ * @property-write string|null $user_id
+ * @property-write bool|null $invoice_2fa
+ * @property-write string|null $niokurinin
+ * @property-read CredentialsAddress $address
  */
-final class Carrier extends DatedWrapper
+final class Credentials extends CommonCredentials implements ReadableRequestProperty
 {
-    use PropertyRead;
+    use PropertyWrite;
+    use ObjectPropertyRead;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\CredentialsAddress")
      *
-     * @var string
+     * @var CredentialsAddress
      */
-    private $type;
+    private $address;
 
     /**
-     * @JMS\Type("string")
-     *
-     * @var string
+     * @phan-suppress PhanAccessReadOnlyMagicProperty
      */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
-     */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    public function __construct(?CredentialsAddress $address = null)
+    {
+        $this->address = $address ?? new CredentialsAddress();
+    }
 }

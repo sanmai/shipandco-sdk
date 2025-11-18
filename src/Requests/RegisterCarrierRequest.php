@@ -25,49 +25,61 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Requests;
 
-use CommonSDK\Concerns\PropertyRead;
+use CommonSDK\Concerns\ObjectPropertyRead;
+use CommonSDK\Concerns\PropertyWrite;
+use CommonSDK\Concerns\RequestCore;
+use CommonSDK\Contracts\JsonRequest;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use ShipAndCoSDK\Requests\Types\Carrier\Credentials;
+use ShipAndCoSDK\Requests\Types\Carrier\Settings;
+use ShipAndCoSDK\Responses\RegisterCarrierResponse;
 
 /**
- * @property-read string $type
- * @property-read string $state
+ * Registers a new carrier account with Ship&co.
+ *
+ * @property-write string $type
  * @property-read Credentials $credentials
  * @property-read Settings $settings
  */
-final class Carrier extends DatedWrapper
+final class RegisterCarrierRequest implements JsonRequest
 {
-    use PropertyRead;
+    use RequestCore;
+    use PropertyWrite;
+    use ObjectPropertyRead;
+
+    private const METHOD = 'POST';
+    private const ADDRESS = '/v1/carriers';
+    private const RESPONSE = RegisterCarrierResponse::class;
 
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
     private $type;
 
     /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\Credentials")
      *
      * @var Credentials
      */
     private $credentials;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\Settings")
      *
      * @var Settings
      */
     private $settings;
+
+    /**
+     * @phan-suppress PhanAccessReadOnlyMagicProperty
+     */
+    public function __construct(?Credentials $credentials = null, ?Settings $settings = null)
+    {
+        $this->credentials = $credentials ?? new Credentials();
+        $this->settings = $settings ?? new Settings();
+    }
 }

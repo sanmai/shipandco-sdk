@@ -37,6 +37,7 @@ use Symfony\Component\HttpFoundation\Response as HttpResponse;
  * Ship&Co API Client.
  *
  * @method Responses\CarriersResponse|Responses\Types\Carrier[]               sendCarriersRequest(Requests\CarriersRequest $request)
+ * @method Responses\RegisterCarrierResponse                                  sendRegisterCarrierRequest(Requests\RegisterCarrierRequest $request)
  * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendAddressesRequest(Requests\AddressesRequest $request)
  * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendWarehousesRequest(Requests\WarehousesRequest $request)
  * @method Responses\RatesResponse|Responses\Types\Rate[]                     sendRatesRequest(Requests\RatesRequest $request)

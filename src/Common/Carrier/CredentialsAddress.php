@@ -25,49 +25,72 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Common\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
-/**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
- */
-final class Carrier extends DatedWrapper
+abstract class CredentialsAddress
 {
-    use PropertyRead;
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $company;
 
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
-    private $type;
+    protected $phone;
 
     /**
      * @JMS\Type("string")
      *
-     * @var string
+     * @var string|null
      */
-    private $state;
+    protected $email;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
+     * @JMS\Type("string")
      *
-     * @var Credentials
+     * @var string|null
      */
-    private $credentials;
+    protected $address1;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
+     * @JMS\Type("string")
      *
-     * @var Settings
+     * @var string|null
      */
-    private $settings;
+    protected $address2;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $full_name;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $zip;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $city;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string|null
+     */
+    protected $country;
 }

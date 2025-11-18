@@ -40,6 +40,7 @@ use JMS\Serializer\Annotation as JMS;
  * @property-read string $account_number
  * @property-read string $account_key_number
  * @property-read string $customer_numbers
+ * @property-read string $site_id
  */
 final class Credentials implements IteratorAggregate
 {
@@ -94,4 +95,11 @@ final class Credentials implements IteratorAggregate
      * @var string
      */
     private $customer_numbers;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $site_id;
 }

@@ -25,23 +25,38 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Responses;
 
 use CommonSDK\Concerns\PropertyRead;
+use CommonSDK\Concerns\SuccessfulResponse;
+use CommonSDK\Contracts\Response;
+use DateTimeImmutable;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
 use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
 use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
 /**
+ * Response from registering a new carrier account.
+ *
+ * @property-read string $id
  * @property-read string $type
  * @property-read string $state
+ * @property-read DateTimeImmutable $created_at
+ * @property-read DateTimeImmutable $updated_at
  * @property-read Credentials $credentials
  * @property-read Settings $settings
  */
-final class Carrier extends DatedWrapper
+final class RegisterCarrierResponse implements Response
 {
     use PropertyRead;
+    use SuccessfulResponse;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $id;
 
     /**
      * @JMS\Type("string")
@@ -56,6 +71,20 @@ final class Carrier extends DatedWrapper
      * @var string
      */
     private $state;
+
+    /**
+     * @JMS\Type("DateTimeImmutable<'Y-m-d\TH:i:s.uO'>")
+     *
+     * @var DateTimeImmutable
+     */
+    private $created_at;
+
+    /**
+     * @JMS\Type("DateTimeImmutable<'Y-m-d\TH:i:s.uO'>")
+     *
+     * @var DateTimeImmutable
+     */
+    private $updated_at;
 
     /**
      * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")

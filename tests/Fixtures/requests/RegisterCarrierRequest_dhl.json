@@ -1,0 +1,23 @@
+{
+    "type": "dhl",
+    "credentials": {
+        "account_number": "123456789",
+        "site_id": "SITE123",
+        "password": "secret_password",
+        "address": {
+            "company": "World Company",
+            "phone": "08042428484",
+            "email": "test@gmail.com",
+            "address1": "Nakagyo-ku, Yaoyacho",
+            "zip": "6048072",
+            "city": "Kyoto",
+            "country": "JP"
+        }
+    },
+    "settings": {
+        "print": {
+            "size": "PDF_A4"
+        },
+        "label": {}
+    }
+}

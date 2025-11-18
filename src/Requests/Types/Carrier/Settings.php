@@ -25,49 +25,44 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Requests\Types\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
+use CommonSDK\Concerns\ObjectPropertyRead;
+use CommonSDK\Concerns\PropertyWrite;
+use CommonSDK\Contracts\ReadableRequestProperty;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use ShipAndCoSDK\Common\Carrier\Settings as CommonSettings;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * @property-write string|null $scheduled_delivery_email
+ * @property-read SettingsPrint $print
+ * @property-read SettingsLabel $label
  */
-final class Carrier extends DatedWrapper
+final class Settings extends CommonSettings implements ReadableRequestProperty
 {
-    use PropertyRead;
+    use PropertyWrite;
+    use ObjectPropertyRead;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\SettingsPrint")
      *
-     * @var string
+     * @var SettingsPrint
      */
-    private $type;
+    private $print;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\SettingsLabel")
      *
-     * @var string
+     * @var SettingsLabel
      */
-    private $state;
+    private $label;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
+     * @phan-suppress PhanAccessReadOnlyMagicProperty
      */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    public function __construct(?SettingsPrint $print = null, ?SettingsLabel $label = null)
+    {
+        $this->print = $print ?? new SettingsPrint();
+        $this->label = $label ?? new SettingsLabel();
+    }
 }

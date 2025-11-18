@@ -25,49 +25,41 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Responses\Types\Carrier;
 
+use CommonSDK\Concerns\PropertyIterator;
 use CommonSDK\Concerns\PropertyRead;
+use IteratorAggregate;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * @property-read bool $hide_account
+ * @property-read bool $extra_page
+ * @property-read bool $delivery_date
  */
-final class Carrier extends DatedWrapper
+final class SettingsLabel implements IteratorAggregate
 {
     use PropertyRead;
+    use PropertyIterator;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("bool")
      *
-     * @var string
+     * @var bool
      */
-    private $type;
+    private $hide_account;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("bool")
      *
-     * @var string
+     * @var bool
      */
-    private $state;
+    private $extra_page;
 
     /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
+     * @JMS\Type("bool")
      *
-     * @var Credentials
+     * @var bool
      */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    private $delivery_date;
 }

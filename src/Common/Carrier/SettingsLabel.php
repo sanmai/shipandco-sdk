@@ -25,49 +25,30 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Common\Carrier;
 
-use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
-/**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
- */
-final class Carrier extends DatedWrapper
+abstract class SettingsLabel
 {
-    use PropertyRead;
+    /**
+     * @JMS\Type("bool")
+     *
+     * @var bool|null
+     */
+    protected $hide_account;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("bool")
      *
-     * @var string
+     * @var bool|null
      */
-    private $type;
+    protected $extra_page;
 
     /**
-     * @JMS\Type("string")
+     * @JMS\Type("bool")
      *
-     * @var string
+     * @var bool|null
      */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
-     */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    protected $delivery_date;
 }

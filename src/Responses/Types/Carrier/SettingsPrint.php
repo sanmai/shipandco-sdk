@@ -25,49 +25,33 @@
 
 declare(strict_types=1);
 
-namespace ShipAndCoSDK\Responses\Types;
+namespace ShipAndCoSDK\Responses\Types\Carrier;
 
+use CommonSDK\Concerns\PropertyIterator;
 use CommonSDK\Concerns\PropertyRead;
+use IteratorAggregate;
 use JMS\Serializer\Annotation as JMS;
-use ShipAndCoSDK\Common\DatedWrapper;
-use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
-use ShipAndCoSDK\Responses\Types\Carrier\Settings;
 
 /**
- * @property-read string $type
- * @property-read string $state
- * @property-read Credentials $credentials
- * @property-read Settings $settings
+ * @property-read string $size
+ * @property-read string $size_fallback
  */
-final class Carrier extends DatedWrapper
+final class SettingsPrint implements IteratorAggregate
 {
     use PropertyRead;
+    use PropertyIterator;
 
     /**
      * @JMS\Type("string")
      *
      * @var string
      */
-    private $type;
+    private $size;
 
     /**
      * @JMS\Type("string")
      *
      * @var string
      */
-    private $state;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Credentials")
-     *
-     * @var Credentials
-     */
-    private $credentials;
-
-    /**
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
-     *
-     * @var Settings
-     */
-    private $settings;
+    private $size_fallback;
 }
