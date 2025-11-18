@@ -34,10 +34,10 @@ use ShipAndCoSDK\Common\Carrier\Invoice2fa as BaseInvoice2fa;
 /**
  * Invoice details for FedEx 2FA verification.
  *
- * @property string $number   The invoice number from the latest FedEx invoice
- * @property string $date     The invoice date in YYYY-MM-DD format
- * @property float  $amount   The total amount on the invoice
- * @property string $currency The currency code (e.g., JPY, USD)
+ * @property-write string $number   The invoice number from the latest FedEx invoice
+ * @property-write string $date     The invoice date in YYYY-MM-DD format
+ * @property-write float  $amount   The total amount on the invoice
+ * @property-write string $currency The currency code (e.g., JPY, USD)
  */
 final class Invoice2fa extends BaseInvoice2fa implements ReadableRequestProperty
 {
