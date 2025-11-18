@@ -80,7 +80,13 @@ $request = new \ShipAndCoSDK\Requests\RegisterCarrierRequest();
 $request->type = 'fedex';
 $request->credentials->account_number = 'YOUR_FEDEX_ACCOUNT';
 $request->credentials->password = 'YOUR_FEDEX_PASSWORD';
-$request->credentials->invoice_2fa = true; // Required for API registration
+
+// Invoice 2FA is required for FedEx API registration
+$request->credentials->invoice_2fa->number = 'INV-2025-12345';  // Invoice number from latest FedEx invoice
+$request->credentials->invoice_2fa->date = '2025-03-01';        // Invoice date (YYYY-MM-DD)
+$request->credentials->invoice_2fa->amount = 1234.56;            // Invoice total amount
+$request->credentials->invoice_2fa->currency = 'USD';            // Invoice currency code
+
 $request->credentials->address->company = 'Your Company Name';
 $request->credentials->address->full_name = 'Your Name';
 $request->credentials->address->phone = '+12025551234';

@@ -4,6 +4,7 @@
         "account_number": "123456789",
         "site_id": "SITE123",
         "password": "secret_password",
+        "invoice_2fa": {},
         "address": {
             "company": "World Company",
             "phone": "08042428484",

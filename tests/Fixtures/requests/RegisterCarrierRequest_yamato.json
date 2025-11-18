@@ -3,6 +3,7 @@
     "credentials": {
         "key": "yamato_api_key_123",
         "freight_number": "01",
+        "invoice_2fa": {},
         "address": {}
     },
     "settings": {

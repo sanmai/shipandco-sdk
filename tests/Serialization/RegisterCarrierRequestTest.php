@@ -62,7 +62,10 @@ class RegisterCarrierRequestTest extends TestCase
         $request->type = 'fedex';
         $request->credentials->account_number = '987654321';
         $request->credentials->password = 'fedex_secret';
-        $request->credentials->invoice_2fa = true;
+        $request->credentials->invoice_2fa->number = 'INV-2025-12345';
+        $request->credentials->invoice_2fa->date = '2025-03-01';
+        $request->credentials->invoice_2fa->amount = 1234.56;
+        $request->credentials->invoice_2fa->currency = 'USD';
         $request->credentials->address->company = 'FedEx Test Company';
         $request->credentials->address->full_name = 'John Doe';
         $request->credentials->address->phone = '+12025551234';

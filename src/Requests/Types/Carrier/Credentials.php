@@ -44,9 +44,9 @@ use ShipAndCoSDK\Common\Carrier\Credentials as CommonCredentials;
  * @property-write string|null $key
  * @property-write string|null $freight_number
  * @property-write string|null $user_id
- * @property-write bool|null $invoice_2fa
  * @property-write string|null $niokurinin
  * @property-read CredentialsAddress $address
+ * @property-read Invoice2fa $invoice_2fa
  */
 final class Credentials extends CommonCredentials implements ReadableRequestProperty
 {
@@ -61,10 +61,20 @@ final class Credentials extends CommonCredentials implements ReadableRequestProp
     private $address;
 
     /**
+     * Invoice details for FedEx 2FA verification.
+     *
+     * @JMS\Type("ShipAndCoSDK\Requests\Types\Carrier\Invoice2fa")
+     *
+     * @var Invoice2fa
+     */
+    protected $invoice_2fa;
+
+    /**
      * @phan-suppress PhanAccessReadOnlyMagicProperty
      */
-    public function __construct(?CredentialsAddress $address = null)
+    public function __construct(?CredentialsAddress $address = null, ?Invoice2fa $invoice_2fa = null)
     {
         $this->address = $address ?? new CredentialsAddress();
+        $this->invoice_2fa = $invoice_2fa ?? new Invoice2fa();
     }
 }

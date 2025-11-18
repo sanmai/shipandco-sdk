@@ -29,91 +29,45 @@ namespace ShipAndCoSDK\Common\Carrier;
 
 use JMS\Serializer\Annotation as JMS;
 
-abstract class Credentials
+/**
+ * Invoice details for FedEx 2FA verification.
+ * Required when registering a FedEx account via the API.
+ */
+abstract class Invoice2fa
 {
     /**
+     * The invoice number from the latest FedEx invoice.
+     *
      * @JMS\Type("string")
      *
-     * @var string|null
+     * @var string
      */
-    protected $account_number;
+    protected $number;
 
     /**
+     * The invoice date in YYYY-MM-DD format.
+     *
      * @JMS\Type("string")
      *
-     * @var string|null
+     * @var string
      */
-    protected $site_id;
+    protected $date;
 
     /**
+     * The total amount on the invoice.
+     *
+     * @JMS\Type("float")
+     *
+     * @var float
+     */
+    protected $amount;
+
+    /**
+     * The currency code for the invoice amount (e.g., JPY, USD).
+     *
      * @JMS\Type("string")
      *
-     * @var string|null
+     * @var string
      */
-    protected $password;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $import_acc_number;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $access_key;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $user_name;
-
-    /**
-     * @JMS\Type("array<string>")
-     *
-     * @var string[]|null
-     */
-    protected $customer_numbers;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $key;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $freight_number;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $user_id;
-
-    /**
-     * Invoice details for FedEx 2FA verification.
-     *
-     * @JMS\Type("ShipAndCoSDK\Common\Carrier\Invoice2fa")
-     *
-     * @var Invoice2fa|null
-     */
-    protected $invoice_2fa;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string|null
-     */
-    protected $niokurinin;
+    protected $currency;
 }

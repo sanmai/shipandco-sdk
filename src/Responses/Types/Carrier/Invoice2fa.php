@@ -30,86 +30,18 @@ namespace ShipAndCoSDK\Responses\Types\Carrier;
 use CommonSDK\Concerns\PropertyIterator;
 use CommonSDK\Concerns\PropertyRead;
 use IteratorAggregate;
-use JMS\Serializer\Annotation as JMS;
+use ShipAndCoSDK\Common\Carrier\Invoice2fa as BaseInvoice2fa;
 
 /**
- * @property-read string $user_id
- * @property-read string $key
- * @property-read string $freight_number
- * @property-read string $password
- * @property-read string $account_number
- * @property-read string $account_key_number
- * @property-read string $customer_numbers
- * @property-read string $site_id
- * @property-read Invoice2fa $invoice_2fa
+ * Invoice details for FedEx 2FA verification.
+ *
+ * @property-read string $number   The invoice number from the latest FedEx invoice
+ * @property-read string $date     The invoice date in YYYY-MM-DD format
+ * @property-read float  $amount   The total amount on the invoice
+ * @property-read string $currency The currency code (e.g., JPY, USD)
  */
-final class Credentials implements IteratorAggregate
+final class Invoice2fa extends BaseInvoice2fa implements IteratorAggregate
 {
     use PropertyRead;
     use PropertyIterator;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $user_id;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $key;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $freight_number;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $account_number;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $account_key_number;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $customer_numbers;
-
-    /**
-     * @JMS\Type("string")
-     *
-     * @var string
-     */
-    private $site_id;
-
-    /**
-     * Invoice details for FedEx 2FA verification.
-     *
-     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Invoice2fa")
-     *
-     * @var Invoice2fa
-     */
-    private $invoice_2fa;
 }
