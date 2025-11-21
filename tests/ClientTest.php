@@ -59,6 +59,11 @@ class ClientTest extends ClientTestCase
             ['REQUIRED', 'この項目は必須です'],
             ['REQUIRED', 'この項目は必須です'],
         ]];
+
+        // Ship&co sometimes returns JSON with text/html content-type
+        yield 'error_400_shipment.json with text/html' => ['error_400_shipment.json', 400, [
+            ['SHIPMENT_FAILED', 'Shipment creation failed'],
+        ], 'text/html; charset=utf-8'];
     }
 
     public function loadFixture($filename): string

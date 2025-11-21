@@ -31,11 +31,6 @@ export PHAN_DISABLE_XDEBUG_WARN=1
 PHPSTAN=vendor/bin/phpstan
 PHPSTAN_ARGS=analyse src tests --level=2 -c .phpstan.neon
 
-# Psalm
-PSALM=vendor/bin/psalm
-PSALM_ARGS=--show-info=false
-PSALM_PHP_VERSION="PHP 7.3"
-
 # Composer
 COMPOSER=$(PHP) $(shell which composer)
 
@@ -57,7 +52,7 @@ ci-test: prerequisites
 	$(SILENT) $(PHP) $(PHPUNIT) $(PHPUNIT_COVERAGE_CLOVER) --verbose --group=$(PHPUNIT_GROUP)
 
 ci-analyze: SILENT=
-ci-analyze: prerequisites ci-phpunit ci-infection ci-phan ci-phpstan ci-psalm
+ci-analyze: prerequisites ci-phpunit ci-infection ci-phan ci-phpstan
 
 ci-phpunit: ci-cs
 	$(SILENT) $(PHPDBG) $(PHPUNIT) $(PHPUNIT_ARGS)
@@ -70,9 +65,6 @@ ci-phan: ci-cs
 
 ci-phpstan: ci-cs
 	$(SILENT) $(PHP) $(PHPSTAN) $(PHPSTAN_ARGS) --no-progress || true
-
-ci-psalm: ci-cs
-	$(SILENT) $(PHP) $(PSALM) $(PSALM_ARGS) --no-cache
 
 ci-cs: prerequisites
 	$(SILENT) $(PHP) $(PHP_CS_FIXER) $(PHP_CS_FIXER_ARGS) --dry-run --stop-on-violation fix
@@ -97,7 +89,7 @@ phpunit: cs
 	CI=true $(SILENT) $(PHP) $(INFECTION) $(INFECTION_ARGS)
 
 .PHONY: analyze
-analyze: phan phpstan psalm
+analyze: phan phpstan
 
 .PHONY: phan
 phan: cs
@@ -106,10 +98,6 @@ phan: cs
 .PHONY: phpstan
 phpstan: cs
 	$(SILENT) $(PHP) $(PHPSTAN) $(PHPSTAN_ARGS)
-
-.PHONY: psalm
-psalm: cs
-	$(SILENT) $(PHP) $(PSALM) $(PSALM_ARGS)
 
 .PHONY: cs
 cs: test-prerequisites

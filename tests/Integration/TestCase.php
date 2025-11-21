@@ -55,7 +55,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             $builder->setCacheDir('build/cache/', true);
         }
 
-        if (in_array('--debug', $_SERVER['argv'])) {
+        if (in_array('--debug', $_SERVER['argv'] ?? [])) {
             $builder->setLogger(new DebuggingLogger());
         }
 
