@@ -27,7 +27,9 @@ declare(strict_types=1);
 
 namespace Tests\ShipAndCoSDK;
 
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use ShipAndCoSDK\Client;
 use ShipAndCoSDK\ClientBuilder;
 
@@ -40,5 +42,67 @@ class ClientBuilderTest extends TestCase
     {
         $builder = new ClientBuilder();
         $this->assertInstanceOf(Client::class, $builder->build());
+    }
+
+    public function test_middleware_normalizes_empty_code_object()
+    {
+        $middleware = $this->getMiddleware();
+
+        $input = '{"debug_id":"err_test","code":{},"message":""}';
+        $expected = '{"debug_id":"err_test","code":null,"message":""}';
+
+        $response = new Response(400, [], $input);
+
+        $handler = $middleware(function ($request, $options) use ($response) {
+            return \GuzzleHttp\Promise\Create::promiseFor($response);
+        });
+
+        $result = $handler(null, [])->wait();
+
+        $this->assertSame($expected, (string) $result->getBody());
+    }
+
+    public function test_middleware_preserves_valid_code_string()
+    {
+        $middleware = $this->getMiddleware();
+
+        $input = '{"debug_id":"err_test","code":"VALIDATION_ERROR","message":"Error"}';
+
+        $response = new Response(400, [], $input);
+
+        $handler = $middleware(function ($request, $options) use ($response) {
+            return \GuzzleHttp\Promise\Create::promiseFor($response);
+        });
+
+        $result = $handler(null, [])->wait();
+
+        $this->assertSame($input, (string) $result->getBody());
+    }
+
+    public function test_middleware_handles_empty_object_with_whitespace()
+    {
+        $middleware = $this->getMiddleware();
+
+        $input = '{"code": {  }}';
+        $expected = '{"code":null}';
+
+        $response = new Response(400, [], $input);
+
+        $handler = $middleware(function ($request, $options) use ($response) {
+            return \GuzzleHttp\Promise\Create::promiseFor($response);
+        });
+
+        $result = $handler(null, [])->wait();
+
+        $this->assertSame($expected, (string) $result->getBody());
+    }
+
+    private function getMiddleware(): callable
+    {
+        $reflection = new ReflectionClass(ClientBuilder::class);
+        $method = $reflection->getMethod('normalizeResponseMiddleware');
+        $method->setAccessible(true);
+
+        return $method->invoke(null);
     }
 }
