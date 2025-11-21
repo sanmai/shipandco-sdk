@@ -31,13 +31,14 @@ use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
 use ShipAndCoSDK\Common\DatedWrapper as CommonDatedWrapper;
 use ShipAndCoSDK\Responses\Types\Address;
+use DateTimeImmutable;
 
 use function property_exists;
 
 /**
  * @property-read string $id
- * @property-read \DateTimeImmutable $created_at
- * @property-read \DateTimeImmutable $updated_at
+ * @property-read DateTimeImmutable $created_at
+ * @property-read DateTimeImmutable $updated_at
  * @property-read string|null $address1
  * @property-read string|null $address1_kanji
  * @property-read string|null $address2
