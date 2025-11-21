@@ -32,8 +32,12 @@ use JMS\Serializer\Annotation as JMS;
 use ShipAndCoSDK\Common\DatedWrapper;
 use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
 use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use DateTimeImmutable;
 
 /**
+ * @property-read string $id
+ * @property-read DateTimeImmutable $created_at
+ * @property-read DateTimeImmutable $updated_at
  * @property-read string $type
  * @property-read string $state
  * @property-read Credentials $credentials

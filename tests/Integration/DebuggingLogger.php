@@ -55,9 +55,6 @@ final class DebuggingLogger implements LoggerInterface
     /**
      * @param mixed  $level
      * @param string|Stringable $message
-     *
-     * @psalm-suppress MixedTypeCoercion
-     * @psalm-suppress TypeDoesNotContainType
      */
     public function log($level, string|Stringable $message, array $context = []): void
     {

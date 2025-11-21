@@ -40,12 +40,6 @@ class LaravelServiceProvider extends ServiceProvider implements DeferrableProvid
 {
     public const SERVICE_NAME = 'shipandco';
 
-    /**
-     * @psalm-suppress MixedAssignment
-     * @psalm-suppress MixedArrayAccess
-     * @psalm-suppress MixedArgument
-     * @psalm-suppress MixedOperand
-     */
     public function register()
     {
         $this->app->singleton(Client::class, function (Application $app) {

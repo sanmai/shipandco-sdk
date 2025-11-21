@@ -159,7 +159,6 @@ final class ClientBuilder implements LoggerAwareInterface
 
         $client = new Client($this->http, $this->serializer);
 
-        /** @psalm-suppress RedundantConditionGivenDocblockType */
         if ($this->logger !== null) {
             $client->setLogger($this->logger);
         }
@@ -206,9 +205,6 @@ final class ClientBuilder implements LoggerAwareInterface
      * @codeCoverageIgnore
      *
      * @phan-suppress PhanDeprecatedFunction
-     *
-     * @psalm-suppress RedundantConditionGivenDocblockType
-     * @psalm-suppress DeprecatedFunction
      */
     private function getDefaultUserAgent(): string
     {
@@ -223,8 +219,6 @@ final class ClientBuilder implements LoggerAwareInterface
 
     /**
      * @codeCoverageIgnore
-     *
-     * @psalm-suppress MixedArrayAccess
      */
     private static function getVersion(): ?string
     {

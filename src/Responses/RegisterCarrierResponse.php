@@ -30,9 +30,14 @@ namespace ShipAndCoSDK\Responses;
 use CommonSDK\Concerns\SuccessfulResponse;
 use CommonSDK\Contracts\Response;
 use ShipAndCoSDK\Responses\Types\Carrier;
+use DateTimeImmutable;
 
 /**
  * Response from registering a new carrier account.
+ *
+ * @property-read string $id
+ * @property-read DateTimeImmutable $created_at
+ * @property-read DateTimeImmutable $updated_at
  */
 final class RegisterCarrierResponse extends Carrier implements Response
 {
