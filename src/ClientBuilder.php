@@ -29,6 +29,9 @@ namespace ShipAndCoSDK;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Utils;
+use Psr\Http\Message\ResponseInterface;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
@@ -45,6 +48,7 @@ use function array_merge;
 use function sprintf;
 use function assert;
 use function is_string;
+use function preg_replace;
 
 /**
  * @codeCoverageIgnore
@@ -148,14 +152,20 @@ final class ClientBuilder implements LoggerAwareInterface
             $this->serializer = $this->buildSerializer();
         }
 
-        $this->http = $this->http ?? new GuzzleClient(array_merge([
-            'base_uri' => $this->baseUrl,
-            'timeout'  => $this->timeout,
-            'headers'  => [
-                'X-Access-Token'  => $this->token,
-                'User-Agent'      => $this->getDefaultUserAgent(),
-            ],
-        ], $this->extraOptions));
+        if ($this->http === null) {
+            $stack = HandlerStack::create();
+            $stack->push(self::normalizeResponseMiddleware());
+
+            $this->http = new GuzzleClient(array_merge([
+                'handler'  => $stack,
+                'base_uri' => $this->baseUrl,
+                'timeout'  => $this->timeout,
+                'headers'  => [
+                    'X-Access-Token'  => $this->token,
+                    'User-Agent'      => $this->getDefaultUserAgent(),
+                ],
+            ], $this->extraOptions));
+        }
 
         $client = new Client($this->http, $this->serializer);
 
@@ -235,5 +245,32 @@ final class ClientBuilder implements LoggerAwareInterface
         }
 
         return $version;
+    }
+
+    /**
+     * Middleware to normalize Ship&co API responses.
+     *
+     * Ship&co sometimes returns empty objects instead of strings for certain fields.
+     */
+    private static function normalizeResponseMiddleware(): callable
+    {
+        return static function (callable $handler): callable {
+            return static function ($request, array $options) use ($handler) {
+                return $handler($request, $options)->then(
+                    static function (ResponseInterface $response): ResponseInterface {
+                        $body = (string) $response->getBody();
+
+                        // Replace empty objects with null for fields that should be strings
+                        $normalized = preg_replace('/"code"\s*:\s*\{\s*\}/', '"code":null', $body);
+
+                        if ($normalized !== $body) {
+                            return $response->withBody(Utils::streamFor($normalized));
+                        }
+
+                        return $response;
+                    }
+                );
+            };
+        };
     }
 }
