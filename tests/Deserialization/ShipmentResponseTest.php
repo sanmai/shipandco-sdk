@@ -35,6 +35,7 @@ use function var_export;
 
 /**
  * @covers \ShipAndCoSDK\Responses\ShipmentResponse
+ * @covers \ShipAndCoSDK\Responses\Types\Delivery
  */
 class ShipmentResponseTest extends TestCase
 {
