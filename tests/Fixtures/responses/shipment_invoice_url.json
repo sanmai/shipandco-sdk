@@ -1,0 +1,6 @@
+{
+ "delivery": {
+  "label": "https://storage.googleapis.com/live-shipandco/labels/202010/example.pdf",
+  "invoice": "https://storage.googleapis.com/live-shipandco/invoices/202010/invoice.pdf"
+ }
+}

@@ -35,6 +35,7 @@ use function var_export;
 
 /**
  * @covers \ShipAndCoSDK\Responses\ShipmentResponse
+ * @covers \ShipAndCoSDK\Responses\Types\Delivery
  */
 class ShipmentResponseTest extends TestCase
 {
@@ -318,6 +319,30 @@ class ShipmentResponseTest extends TestCase
         }
 
         $this->assertSame($expected, $responseArray);
+    }
+
+    public function test_invoice_data_from_base64()
+    {
+        $response = $this->loadFixture('shipment_response.json');
+
+        $this->assertSame('JVBERg==', $response->delivery->invoice);
+        $this->assertSame('%PDF', $response->delivery->getInvoiceData());
+    }
+
+    public function test_invoice_data_from_url()
+    {
+        $response = $this->loadFixture('shipment_invoice_url.json');
+
+        $this->assertSame('https://storage.googleapis.com/live-shipandco/invoices/202010/invoice.pdf', $response->delivery->invoice);
+        $this->assertNull($response->delivery->getInvoiceData());
+    }
+
+    public function test_invoice_data_when_absent()
+    {
+        $response = $this->loadFixture('shipment_japanpost.json');
+
+        $this->assertNull($response->delivery->invoice);
+        $this->assertNull($response->delivery->getInvoiceData());
     }
 
     /** @return ShipmentResponse */
