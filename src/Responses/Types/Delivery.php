@@ -31,6 +31,7 @@ use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
 
 use function base64_decode;
+use function preg_match;
 use function str_starts_with;
 
 /**
@@ -101,7 +102,7 @@ final class Delivery
      */
     public function getInvoiceData(): ?string
     {
-        if ($this->invoice === null || str_starts_with($this->invoice, 'https://')) {
+        if ($this->invoice === null || preg_match('#https?://#', $this->invoice)) {
             return null;
         }
 
