@@ -36,6 +36,8 @@ use JMS\Serializer\Annotation as JMS;
 use ReturnTypeWillChange;
 use ShipAndCoSDK\Responses\Bad\ErrorResponse\Detail;
 
+use function is_array;
+
 /**
  * Generic error response.
  *
@@ -68,11 +70,10 @@ final class ErrorResponse implements Response, HasErrorCode, Countable
     private $debug_id;
 
     /**
-     * @JMS\Type("string")
      *
-     * @var string|null
+     * @var string|array<string, string>|null
      */
-    private $code;
+    private string|array|null $code = null;
 
     /**
      * @JMS\Type("string")
@@ -116,7 +117,16 @@ final class ErrorResponse implements Response, HasErrorCode, Countable
     {
         if ($this->auth === false) {
             // Some error responses have no code
-            return $this->code ?? self::AUTH_ERROR;
+            return $this->getCode() ?? self::AUTH_ERROR;
+        }
+
+        return $this->getCode();
+    }
+
+    private function getCode(): ?string
+    {
+        if (is_array($this->code)) {
+            return $this->code['type'] ?? null;
         }
 
         return $this->code;

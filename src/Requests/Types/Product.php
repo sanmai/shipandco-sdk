@@ -37,6 +37,9 @@ use ShipAndCoSDK\Common\Product as CommonProduct;
  * @property-write int $price
  * @property-write int $weight
  * @property-write string $hs_code
+ * @property-write string $sku
+ * @property-write string $mpn
+ * @property-write string $barcode
  * @property-write string $origin_country
  */
 final class Product extends CommonProduct implements ReadableRequestProperty

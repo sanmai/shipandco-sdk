@@ -71,5 +71,26 @@ abstract class Product
      *
      * @var string
      */
+    protected $sku;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $mpn;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $barcode;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
     protected $origin_country;
 }

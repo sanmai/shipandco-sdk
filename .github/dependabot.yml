@@ -9,6 +9,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 14
+    groups:
+      composer:
+        patterns:
+          - "*"
+
       day: "wednesday"
       time: "16:00"
       timezone: "Asia/Tokyo"
@@ -17,6 +24,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 14
+    groups:
+      actions:
+        patterns:
+          - "*"
+
       day: "wednesday"
       time: "15:00"
       timezone: "Asia/Tokyo"

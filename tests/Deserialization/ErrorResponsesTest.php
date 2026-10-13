@@ -77,6 +77,10 @@ class ErrorResponsesTest extends TestCase
         yield 'error_500_no_message.json' => ['error_500_no_message.json', [
             ['BAD_REQUEST', 'Server made a boo'],
         ]];
+
+        yield 'error_400_zonos.json' => ['error_400_zonos.json', [
+            ['zonos', 'Landed cost calculation failed'],
+        ]];
     }
 
     /**
@@ -116,6 +120,27 @@ class ErrorResponsesTest extends TestCase
         $error = $this->deserializeResponse('{"debug_id":"baz"}');
 
         $this->assertSame('baz', $error->getMessage());
+    }
+
+    public function test_it_reads_code_as_string_or_object()
+    {
+        $error = $this->deserializeResponse('{"code":"FOO"}');
+
+        $this->assertSame('FOO', $error->code);
+        $this->assertSame('FOO', $error->getErrorCode());
+
+        $error = $this->deserializeResponse('{"code":{"type":"zonos"}}');
+
+        $this->assertSame('zonos', $error->code);
+        $this->assertSame('zonos', $error->getErrorCode());
+
+        $error = $this->deserializeResponse('{"code":{"kind":"zonos"}}');
+
+        $this->assertNull($error->getErrorCode());
+
+        $error = $this->deserializeResponse('{"auth":false,"code":{"kind":"zonos"}}');
+
+        $this->assertSame('AUTH', $error->getErrorCode());
     }
 
     protected function deserializeResponse(string $json): ErrorResponse

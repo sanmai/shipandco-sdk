@@ -32,7 +32,6 @@ use JMS\Serializer\Annotation as JMS;
 
 use function base64_decode;
 use function preg_match;
-use function str_starts_with;
 
 /**
  * @property-read string $carrier
