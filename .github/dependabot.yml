@@ -9,28 +9,26 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "wednesday"
+      time: "16:00"
+      timezone: "Asia/Tokyo"
     cooldown:
       default-days: 14
     groups:
       composer:
         patterns:
           - "*"
-
-      day: "wednesday"
-      time: "16:00"
-      timezone: "Asia/Tokyo"
     versioning-strategy: "lockfile-only"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "wednesday"
+      time: "15:00"
+      timezone: "Asia/Tokyo"
     cooldown:
       default-days: 14
     groups:
       actions:
         patterns:
           - "*"
-
-      day: "wednesday"
-      time: "15:00"
-      timezone: "Asia/Tokyo"
