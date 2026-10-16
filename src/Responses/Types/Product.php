@@ -33,8 +33,14 @@ use ShipAndCoSDK\Common\Product as CommonProduct;
 /**
  * @property-read string $name
  * @property-read int $quantity
- * @property-read int $price
+ * @property-read int|float $price
+ * @property-read int $weight
  * @property-read string $hs_code
+ * @property-read string $hs_description
+ * @property-read string $item_id
+ * @property-read string $sku
+ * @property-read string $mpn
+ * @property-read string $barcode
  * @property-read string $origin_country
  */
 final class Product extends CommonProduct

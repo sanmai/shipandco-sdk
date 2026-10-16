@@ -46,11 +46,9 @@ abstract class Product
     protected $quantity;
 
     /**
-     * @JMS\Type("int")
-     *
-     * @var int
+     * @var int|float|null
      */
-    protected $price;
+    protected int|float|null $price = null;
 
     /**
      * @JMS\Type("int")
@@ -65,6 +63,20 @@ abstract class Product
      * @var string
      */
     protected $hs_code;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $hs_description;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    protected $item_id;
 
     /**
      * @JMS\Type("string")
