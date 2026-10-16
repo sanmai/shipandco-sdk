@@ -22,13 +22,14 @@ jobs:
           - '8.3'
           - '8.4'
           - '8.5'
+          - '8.6'
         dependencies: ['']
         make-args: ['']
         include:
           - { php-version: '8.2', dependencies: '--prefer-lowest' }
           - { php-version: '8.2', make-args: 'PHPUNIT_GROUP=integration' }
 
-    continue-on-error: ${{ matrix.php-version == '8.4' }}
+    continue-on-error: ${{ matrix.php-version == '8.6' }}
     name: CI PHP ${{ matrix.php-version }} ${{ matrix.dependencies }} ${{ matrix.make-args }}
 
     steps:
@@ -53,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
+          composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }} ${{ matrix.php-version == '8.6' && '--ignore-platform-req=php+' || '' }}
 
       - name: Validate composer.json
         run: |
