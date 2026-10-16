@@ -45,6 +45,9 @@ abstract class Product
      */
     protected $quantity;
 
+    /**
+     * @var int|float|null
+     */
     protected int|float|null $price = null;
 
     /**
