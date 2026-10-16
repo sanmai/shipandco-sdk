@@ -45,6 +45,6 @@ final class CreateShipmentRequest implements JsonRequest
     use ShipmentFields;
 
     private const METHOD = 'POST';
-    private const ADDRESS = '/api/v1/shipments';
+    private const ADDRESS = '/v1/shipments';
     private const RESPONSE = ShipmentResponse::class;
 }

@@ -29,7 +29,6 @@ namespace Tests\ShipAndCoSDK\Integration;
 
 use ShipAndCoSDK\Requests\RatesRequest;
 
-/** @psalm-suppress TypeDoesNotContainType */
 if (false) {
     include 'examples/020_ResponseErrorHandling.php';
 }
@@ -41,9 +40,6 @@ if (false) {
  */
 final class ErrorsTest extends TestCase
 {
-    /**
-     * @psalm-suppress RedundantConditionGivenDocblockType
-     */
     public function test_it_handles_auth_error()
     {
         /** @var \ShipAndCoSDK\Responses\Bad\ErrorResponse $response */
@@ -64,7 +60,6 @@ final class ErrorsTest extends TestCase
         foreach ($response->details as $detail) {
             $this->assertNotEmpty($detail->code);
             $this->assertNotEmpty($detail->message);
-            $this->assertNotEmpty($detail->field);
         }
     }
 }

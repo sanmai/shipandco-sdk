@@ -1,0 +1,19 @@
+{
+    "id": "carrier_123abc",
+    "type": "dhl",
+    "state": "active",
+    "created_at": "2025-03-10T06:49:21.730000+00:00",
+    "updated_at": "2025-03-10T06:49:21.730000+00:00",
+    "credentials": {
+        "account_number": "****6789",
+        "site_id": "****123"
+    },
+    "settings": {
+        "print": {
+            "size": "PDF_A4"
+        },
+        "label": {
+            "hide_account": false
+        }
+    }
+}

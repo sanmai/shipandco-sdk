@@ -65,6 +65,22 @@ class CreateShipmentRequestTest extends TestCase
         $product->name = 'Orange Basketball';
         $product->quantity = 1;
         $product->price = 7850;
+        $product->item_id = 'variant_89431';
+        $product->sku = 'BALL-ORANGE-7';
+        $product->mpn = 'OB-7850';
+        $product->barcode = '4901234567894';
+        $product->origin_country = 'JP';
+
+        $product = $request->addProduct();
+        $product->name = 'Cotton T-shirt, navy, size M';
+        $product->quantity = 2;
+        $product->price = 24.5;
+        $product->weight = 200;
+        $product->hs_code = '610910';
+        $product->hs_description = 'T-shirts, knitted, of cotton';
+        $product->item_id = 'variant_89432';
+        $product->sku = 'TSHIRT-NVY-M';
+        $product->mpn = 'ACME-TS-1042';
         $product->origin_country = 'JP';
 
         $parcel = $request->addParcel();

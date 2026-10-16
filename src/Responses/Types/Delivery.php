@@ -30,12 +30,16 @@ namespace ShipAndCoSDK\Responses\Types;
 use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
 
+use function base64_decode;
+use function preg_match;
+
 /**
  * @property-read string $carrier
  * @property-read string $method
  * @property-read string[] $tracking_numbers
  * @property-read string $label
  * @property-read string|null $invoice
+ * @property-read string $carrier_invoice
  * @property-read string[] $warnings
  */
 final class Delivery
@@ -78,9 +82,29 @@ final class Delivery
     private $invoice;
 
     /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
+    private $carrier_invoice;
+
+    /**
      * @JMS\Type("array")
      *
      * @var array
      */
     private $warnings = [];
+
+    /**
+     * Returns decoded invoice PDF data if the invoice field contains Base64-encoded data.
+     * Returns null if the invoice is a URL or not set.
+     */
+    public function getInvoiceData(): ?string
+    {
+        if ($this->invoice === null || preg_match('#https?://#', $this->invoice)) {
+            return null;
+        }
+
+        return base64_decode($this->invoice);
+    }
 }

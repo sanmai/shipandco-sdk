@@ -33,10 +33,13 @@ use Psr\Http\Message\ResponseInterface;
 use ShipAndCoSDK\Responses\Bad\ErrorResponse;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
+use function str_starts_with;
+
 /**
  * Ship&Co API Client.
  *
  * @method Responses\CarriersResponse|Responses\Types\Carrier[]               sendCarriersRequest(Requests\CarriersRequest $request)
+ * @method Responses\RegisterCarrierResponse                                  sendRegisterCarrierRequest(Requests\RegisterCarrierRequest $request)
  * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendAddressesRequest(Requests\AddressesRequest $request)
  * @method Responses\AddressesResponse|Responses\Types\Address\DatedWrapper[] sendWarehousesRequest(Requests\WarehousesRequest $request)
  * @method Responses\RatesResponse|Responses\Types\Rate[]                     sendRatesRequest(Requests\RatesRequest $request)
@@ -53,4 +56,13 @@ final class Client extends CommonClient
     ];
 
     protected function postDeserialize(ResponseInterface $httpResponse, Response $response): void {}
+
+    /**
+     * Ship&co sometimes returns JSON with text/html content-type for error responses.
+     */
+    protected function isTextResponse(string $header): bool
+    {
+        return parent::isTextResponse($header)
+            || str_starts_with($header, 'text/html');
+    }
 }

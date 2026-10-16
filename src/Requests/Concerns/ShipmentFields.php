@@ -87,7 +87,7 @@ trait ShipmentFields
     /**
      * @phan-suppress PhanAccessReadOnlyMagicProperty
      */
-    public function __construct(Address $to_address = null, Address $from_address = null, Customs $customs = null, Setup $setup = null)
+    public function __construct(?Address $to_address = null, ?Address $from_address = null, ?Customs $customs = null, ?Setup $setup = null)
     {
         $this->to_address = $to_address ?? new Address();
         $this->from_address = $from_address ?? new Address();

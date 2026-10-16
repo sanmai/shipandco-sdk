@@ -49,7 +49,7 @@ return [
     // Note that the **only** effect of choosing `'5.6'` is to infer that functions removed in php 7.0 exist.
     // (See `backward_compatibility_checks` for additional options)
     // Automatically inferred from composer.json requirement for "php" of "^7.3 || ^8.0"
-    'target_php_version' => '7.3',
+    'target_php_version' => '8.2',
 
     // If enabled, missing properties will be created when
     // they are first seen. If false, we'll report an
@@ -343,12 +343,11 @@ return [
         'src',
         'vendor/psr/http-message/src/',
         'vendor/doctrine/cache/lib/Doctrine/Common/Cache',
-        'vendor/gamez/psr-testlogger/src',
         'vendor/guzzlehttp/guzzle/src',
         'vendor/jms/serializer/src',
         'vendor/laravel/framework/src/Illuminate',
         'vendor/phpunit/phpunit/src',
-        'vendor/psr/log/Psr/Log',
+        'vendor/psr/log/src',
         'vendor/sanmai/json-serializer/src',
         'vendor/sanmai/pipeline/src',
         'vendor/sanmai/sdk-common/src',

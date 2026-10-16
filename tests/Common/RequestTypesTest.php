@@ -51,7 +51,7 @@ class RequestTypesTest extends TestCase
         $this->assertNotNull($it->cash_on_delivery);
     }
 
-    public function test_setup_has_overriden_properties()
+    public function test_setup_has_overridden_properties()
     {
         $care = new Care();
         $cash_on_delivery = new CashOnDelivery();

@@ -13,7 +13,7 @@ Features:
 - [x] Rate
   - [x] [List Rates](#list-rates)
 - [ ] Carrier
-  - [ ] Register Carrier
+  - [x] [Register Carrier](#register-carrier)
   - [x] [List Carriers](#list-carriers)
   - [ ] Update Carrier
   - [ ] Delete Carrier
@@ -43,7 +43,7 @@ This library is far from offering a complete set of API methods, but it should d
 composer require sanmai/shipandco-sdk
 ```
 
-This SDK requires at least PHP 7.3. It was tested to work under PHP 7.3, 7.4, and 8.0.
+This SDK requires at least PHP 8.2.
 
 ## Overview
 
@@ -51,7 +51,7 @@ Major parts are:
 
 - Client. Client is the object you send all requests through.
 - Requests. There are several request objects for most requests the API offers. They follow a fluent interface paradigm, where if the original request has a certain property, a request here will have it too. More on this below.
-- Responses. After sending a request you'll have a response object, which could be an actual reponse, or an error response. All responses follow the same fluent paradigm.
+- Responses. After sending a request you'll have a response object, which could be an actual response, or an error response. All responses follow the same fluent paradigm.
 
 ## Usage
 
@@ -114,7 +114,7 @@ php examples/030_CarriersRequest.php
 
 Examples come with a debugging output enabled so that you can experiment freely.
 
-Obviosly, to run examples you'll need to have the library checked out:
+Obviously, to run examples you'll need to have the library checked out:
 
 ```bash
 git clone https://github.com/sanmai/shipandco-sdk.git
@@ -133,12 +133,49 @@ $response = $client->sendCarriersRequest($request);
 
 foreach ($response as $value) {
     echo "{$value->id}\t{$value->type}\t{$value->state}\t{$value->created_at->format('Y-m-d')}\n";
-    
+
     foreach ($value->credentials as $key => $value) {
         echo "\t$key =\t$value\n";
     }
 }
 ```
+
+#### Register Carrier
+
+```php
+$request = new \ShipAndCoSDK\Requests\RegisterCarrierRequest();
+
+// Example: Register DHL carrier
+$request->type = 'dhl';
+$request->credentials->account_number = '123456789';
+$request->credentials->site_id = 'YOUR_DHL_SITE_ID';
+$request->credentials->password = 'YOUR_DHL_PASSWORD';
+$request->credentials->address->company = 'Your Company Name';
+$request->credentials->address->phone = '08012345678';
+$request->credentials->address->email = 'your@email.com';
+$request->credentials->address->address1 = 'Your Address';
+$request->credentials->address->zip = '1234567';
+$request->credentials->address->city = 'Your City';
+$request->credentials->address->country = 'JP';
+
+$request->settings->print->size = 'PDF_A4';
+
+$response = $client->sendRegisterCarrierRequest($request);
+
+if ($response->hasErrors()) {
+    foreach ($response->getMessages() as $message) {
+        if ($message->getErrorCode() !== '') {
+            echo "{$message->getErrorCode()}: {$message->getMessage()}\n";
+        }
+    }
+    return;
+}
+
+echo "Carrier registered: {$response->id}\n";
+echo "Type: {$response->type}, State: {$response->state}\n";
+```
+
+Different carriers require different credentials. For FedEx, you'll need to set `invoice_2fa` and provide all address fields. See the [runnable example](examples/035_RegisterCarrierRequest.php) for more details.
 
 #### List Addresses
 
@@ -240,7 +277,7 @@ As far as shipments go, it's important to understand that requests for domestic 
 - For domestic shipments addresses (to and from) should be in Japanese. The opposite is true for International shipments.
 - No city field is needed for domestic shipments (city goes to `address_1`).
 - No need for most details about product: on the contrary, for International shipments, details about products are used for customs clearance purpose.
-- For domestic shipments, if it's not a cash on delivery shipment, product name only should work (just to show on the label wha'ts inside the box).
+- For domestic shipments, if it's not a cash on delivery shipment, product name only should work (just to show on the label whats inside the box).
 
 This SDK poses no restrictions on the number of fields specified in a request (other than that they should exist), thus it is a user responsibility (yours) to set correct fields for each type of request.
 

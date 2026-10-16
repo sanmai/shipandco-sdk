@@ -31,13 +31,19 @@ use CommonSDK\Concerns\PropertyRead;
 use JMS\Serializer\Annotation as JMS;
 use ShipAndCoSDK\Common\DatedWrapper;
 use ShipAndCoSDK\Responses\Types\Carrier\Credentials;
+use ShipAndCoSDK\Responses\Types\Carrier\Settings;
+use DateTimeImmutable;
 
 /**
+ * @property-read string $id
+ * @property-read DateTimeImmutable $created_at
+ * @property-read DateTimeImmutable $updated_at
  * @property-read string $type
  * @property-read string $state
  * @property-read Credentials $credentials
+ * @property-read Settings $settings
  */
-final class Carrier extends DatedWrapper
+class Carrier extends DatedWrapper
 {
     use PropertyRead;
 
@@ -61,4 +67,11 @@ final class Carrier extends DatedWrapper
      * @var Credentials
      */
     private $credentials;
+
+    /**
+     * @JMS\Type("ShipAndCoSDK\Responses\Types\Carrier\Settings")
+     *
+     * @var Settings
+     */
+    private $settings;
 }

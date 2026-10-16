@@ -41,21 +41,16 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     public const SHIPANDCO_ACCESS_TOKEN = 'SHIPANDCO_ACCESS_TOKEN';
 
-    /**
-     * @psalm-suppress MixedArgument
-     * @psalm-suppress PossiblyFalseArgument
-     */
     final protected function getClient(): Client
     {
         $builder = new ClientBuilder();
         $builder->setToken(self::getEnvOrSkipTest(self::SHIPANDCO_ACCESS_TOKEN));
 
-        /** @psalm-suppress DeprecatedClass */
         if (is_dir('build/cache/') && class_exists(FilesystemCache::class)) {
             $builder->setCacheDir('build/cache/', true);
         }
 
-        if (in_array('--debug', $_SERVER['argv'])) {
+        if (in_array('--debug', $_SERVER['argv'] ?? [])) {
             $builder->setLogger(new DebuggingLogger());
         }
 

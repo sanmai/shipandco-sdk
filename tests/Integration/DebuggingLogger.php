@@ -31,6 +31,7 @@ use Generator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 use ReflectionClass;
+use Stringable;
 
 use function strtr;
 use function iterator_to_array;
@@ -53,13 +54,12 @@ final class DebuggingLogger implements LoggerInterface
 
     /**
      * @param mixed  $level
-     * @param string $message
-     *
-     * @psalm-suppress MixedTypeCoercion
-     * @psalm-suppress TypeDoesNotContainType
+     * @param string|Stringable $message
      */
-    public function log($level, $message, array $context = [])
+    public function log($level, string|Stringable $message, array $context = []): void
     {
+        $message = (string) $message;
+
         if ($context) {
             $message = strtr($message, iterator_to_array(self::context2replacements($context), true));
         }

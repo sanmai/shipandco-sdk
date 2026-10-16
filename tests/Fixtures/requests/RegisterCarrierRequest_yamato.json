@@ -1,0 +1,18 @@
+{
+    "type": "yamato",
+    "credentials": {
+        "key": "yamato_api_key_123",
+        "freight_number": "01",
+        "invoice_2fa": {},
+        "address": {}
+    },
+    "settings": {
+        "scheduled_delivery_email": "notify@example.com",
+        "print": {
+            "size": "PDF_A4"
+        },
+        "label": {
+            "delivery_date": true
+        }
+    }
+}
