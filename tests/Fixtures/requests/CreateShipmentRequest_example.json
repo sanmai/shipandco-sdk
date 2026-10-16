@@ -27,6 +27,7 @@
             "name": "Orange Basketball",
             "quantity": 1,
             "price": 7850,
+            "item_id": "variant_89431",
             "sku": "BALL-ORANGE-7",
             "mpn": "OB-7850",
             "barcode": "4901234567894",

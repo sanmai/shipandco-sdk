@@ -71,6 +71,13 @@ abstract class Product
      *
      * @var string
      */
+    protected $item_id;
+
+    /**
+     * @JMS\Type("string")
+     *
+     * @var string
+     */
     protected $sku;
 
     /**

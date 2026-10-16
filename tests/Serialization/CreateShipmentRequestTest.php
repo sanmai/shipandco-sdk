@@ -65,6 +65,7 @@ class CreateShipmentRequestTest extends TestCase
         $product->name = 'Orange Basketball';
         $product->quantity = 1;
         $product->price = 7850;
+        $product->item_id = 'variant_89431';
         $product->sku = 'BALL-ORANGE-7';
         $product->mpn = 'OB-7850';
         $product->barcode = '4901234567894';
