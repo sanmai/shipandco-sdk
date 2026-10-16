@@ -34,9 +34,10 @@ use ShipAndCoSDK\Common\Product as CommonProduct;
 /**
  * @property-write string $name
  * @property-write int $quantity
- * @property-write int $price
+ * @property-write int|float $price
  * @property-write int $weight
  * @property-write string $hs_code
+ * @property-write string $hs_description
  * @property-write string $item_id
  * @property-write string $sku
  * @property-write string $mpn

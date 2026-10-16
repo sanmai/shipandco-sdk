@@ -32,6 +32,18 @@
             "mpn": "OB-7850",
             "barcode": "4901234567894",
             "origin_country": "JP"
+        },
+        {
+            "name": "Cotton T-shirt, navy, size M",
+            "quantity": 2,
+            "price": 24.5,
+            "weight": 200,
+            "hs_code": "610910",
+            "hs_description": "T-shirts, knitted, of cotton",
+            "item_id": "variant_89432",
+            "sku": "TSHIRT-NVY-M",
+            "mpn": "ACME-TS-1042",
+            "origin_country": "JP"
         }
     ],
     "parcels": [

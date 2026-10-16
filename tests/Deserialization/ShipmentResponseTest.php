@@ -28,6 +28,7 @@ declare(strict_types=1);
 namespace Tests\ShipAndCoSDK\Deserialization;
 
 use ShipAndCoSDK\Responses\ShipmentResponse;
+use ShipAndCoSDK\Responses\Types\Product;
 
 use function json_decode;
 use function in_array;
@@ -36,6 +37,7 @@ use function var_export;
 /**
  * @covers \ShipAndCoSDK\Responses\ShipmentResponse
  * @covers \ShipAndCoSDK\Responses\Types\Delivery
+ * @covers \ShipAndCoSDK\Responses\Types\Product
  */
 class ShipmentResponseTest extends TestCase
 {
@@ -343,6 +345,41 @@ class ShipmentResponseTest extends TestCase
 
         $this->assertNull($response->delivery->invoice);
         $this->assertNull($response->delivery->getInvoiceData());
+    }
+
+    public static function productProvider(): iterable
+    {
+        yield 'integer price' => ['{"price": 4850}', [
+            'price' => 4850,
+        ]];
+
+        yield 'float price with identifiers' => ['{
+            "price": 24.5,
+            "hs_description": "T-shirts, knitted, of cotton",
+            "item_id": "variant_89431",
+            "sku": "TSHIRT-NVY-M",
+            "mpn": "ACME-TS-1042",
+            "barcode": "4901234567894"
+        }', [
+            'price'          => 24.5,
+            'hs_description' => 'T-shirts, knitted, of cotton',
+            'item_id'        => 'variant_89431',
+            'sku'            => 'TSHIRT-NVY-M',
+            'mpn'            => 'ACME-TS-1042',
+            'barcode'        => '4901234567894',
+        ]];
+    }
+
+    /**
+     * @dataProvider productProvider
+     */
+    public function test_product(string $json, array $expected)
+    {
+        $product = $this->getSerializer()->deserialize($json, Product::class);
+
+        foreach ($expected as $property => $value) {
+            $this->assertSame($value, $product->{$property});
+        }
     }
 
     /** @return ShipmentResponse */
