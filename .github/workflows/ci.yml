@@ -54,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }} ${{ matrix.php-version == '8.6' && '--ignore-platform-req=php+' || '' }}
+          composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
 
       - name: Validate composer.json
         run: |
